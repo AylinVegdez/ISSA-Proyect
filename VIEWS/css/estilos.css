@@ -1,0 +1,314 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    background-color: #e6e6e6;
+    position: relative;
+    overflow: hidden;
+  }
+
+
+  .columnas {
+    display: flex;
+    flex-direction: column;
+    width: 96.04%;
+    position: relative;
+    flex-grow: 1;
+    margin: 23px 2.95% 84px 1.01%;
+  }
+  
+
+  .titulos_menu{
+    font: 700 12px/1.2 "Inter", Helvetica, Arial, serif;
+    color: white;
+    letter-spacing: 0px;
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 125px;
+    margin: 18px 0px 13px 26px;
+  }
+
+/*------------------------------- letras-------------------*/
+.option{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #6FA84B;
+    }
+
+
+/*------------------------sidebar-----------------------------------*/
+
+  @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: black;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: black;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed black;
+    margin: 40px 0;
+}
+
+.tituloTable{
+    font: 700 12px/1.2 "Inter", Helvetica, Arial, serif;
+    color: white;
+    letter-spacing: 0px;
+    position: relative;
+    margin: 0px 0px 0px 20px;
+  }
+.tituloBarra{
+    background-color:#ECBE14;
+    color: white; 
+    padding: 5px;
+    text-align: center;
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar {
+    min-width: 230px;
+    max-width: 250px;
+    background: white;
+    color: black;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+    padding: 20% ;
+    background: white;
+}
+
+#sidebar ul p {
+    color: black;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    color: #47A538;
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {/* cambia de color cuando pasa el cursor */
+    color: #34B5AA;
+    background: #fff;
+}
+
+#sidebar ul li.active>a, /* opcion seleccionada */
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #ecbe14;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a { /* menu desplegable */
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #f8f0f0;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.logo {
+    width: 90%;
+    display: block;
+  }
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+    align-self: baseline;
+}
+.btn{
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    position: relative;
+    margin: 32px;
+}
+
+.btnAzul{
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+	color: #ffffff; /* Color del texto */
+	background: #34B5AA;
+    border-radius: 20px;
+    border-color: #31dbcd00;
+	padding: 13px 28px; /* Relleno del boton */
+    position: absolute;
+    margin-top: 50px;
+    letter-spacing:0.05em
+    }
+    
+.btnAzul:hover {
+	background-color: #31dbcd; /* Color de fondo al pasar el cursor */
+	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+	transform: translateY(-7px);
+  
+
+}
+/*boton flotante*/
+.btn-flotante {
+    
+	font-size: 10px; /* Cambiar el tamaño de la tipografia */
+	text-transform: uppercase; /* Texto en mayusculas */
+	font-weight: bold; /* Fuente en negrita o bold */
+	color: #ffffff; /* Color del texto */
+	border-radius: 30px; /* Borde del boton */
+	letter-spacing: 2px; /* Espacio entre letras */
+	background-color: #6FA84B; /* Color de fondo */
+	padding: 18px 30px; /* Relleno del boton */
+    padding-top: 5px;
+	top: 15px;
+	right: 40px;
+	transition: all 300ms ease 0ms;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	z-index: 99;
+    position: fixed;
+}
+.btn-flotante:hover {
+	background-color: #75c443; /* Color de fondo al pasar el cursor */
+	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+	transform: translateY(-7px);
+    color: white;
+}
+
+.icono{
+   color: white;
+   font-size: calc(1em + 1vw)
+}
+.pager{
+    text-decoration:none;
+    color: black;
+    font-size: calc(1em + 1vw)
+}
+.pager:hover{
+	transform: translateY(-7px);
+    color: #ecbe14;
+}
+
+
+
+.buscador::placeholder{
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10.5px;color: rgba(0, 0, 0, 0.41);
+}
+
+.inputTable{
+    background: rgba(134, 98, 98, 0.04);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border-color: #ffffff00;
+    text-align: center;
+    align-items: center;
+}
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+

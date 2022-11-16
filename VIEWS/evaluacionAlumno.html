@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="./css/common.css" />
+    <link rel="stylesheet" type="text/css" href="./css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="./css/estilos.css" />
+    <!--ICONOS BOOSTRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- CSS only -->
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="style2.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <title>EVALUACIÓN ALUMNOS</title>
+</head>
+
+<body style=" background-color: #e6e6e6;">
+
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-light m-auto" style="background-color:#34b5aa">
+        <div class="container"><br></div>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img class="logo" src="https://cdn.icon-icons.com/icons2/2596/PNG/512/check_one_icon_155665.png">
+            </div>
+
+            <ul class="list-unstyled ">
+                <li class="option">
+                    <a href="#">GENERAR LISTA</a>
+                </li>
+                <li class="option active ">
+                    <a href="#" >EVALUACIÓN TRIMESTRAL</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Page Content  -->
+        <div id="content" >     
+            <button type="button" id="sidebarCollapse" class="btn btn-info">     <!-- Boton azul, que colapsa el menu lateral  -->
+                <i class="fas fa-align-left"></i>
+                <span style="padding: 1px 1px 1px 1px;"></span>
+            </button>
+            <a href="" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;">           <!-- flotante de usuario  -->
+                <i class="bi bi-person-circle icono"></i>
+                <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+            </a>
+        <!--Table-->
+            <div class="container" style="padding-left: 30px; padding-right: 30px;">
+                <h2 class="tituloBarra">Nombre a Capturar</h2>
+                <!--  class="active" -->
+                <div class="table-responsive" style="padding-top:5px;" >
+                    <table class="table table-light">
+                        <thead style="background-color: #6FA84B;text-align: center;">
+                        <tr align="center">
+                            <th scope="col" class="tituloTable" >Materia</th>
+                            <th scope="col" class="tituloTable">Trimestre 1</th>
+                            <th scope="col" class="tituloTable">Trimestre 2</th>
+                            <th scope="col" class="tituloTable">Trimestre 3</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Materia 1</th>
+                            <td><input type="text" id="cal1" class="inputTable " /></td>
+                            <td><input type="text" id="cal2" class="inputTable" disabled/></td>
+                            <td><input type="text" id="cal3" class="inputTable" disabled /></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Materia 2</th>
+                            <td><input type="text" id="cal1" class="inputTable " /></td>
+                            <td><input type="text" id="cal2" class="inputTable" disabled/></td>
+                            <td><input type="text" id="cal3" class="inputTable" disabled /></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Materia 3</th>
+                            <td><input type="text" id="cal1" class="inputTable " /></td>
+                            <td><input type="text" id="cal2" class="inputTable" disabled/></td>
+                            <td><input type="text" id="cal3" class="inputTable" disabled /></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"></th>
+                            <td colspan="3" align="right">
+                                <div d-flex justify-content-end>
+                                    <a href="#"><i class="bi bi-arrow-left-circle-fill pager" ></i>
+                                    </a>
+                                    <a href="#"> 
+                                        <i class="bi bi-arrow-right-circle-fill pager"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        <!-- Search form -->
+            <div class="container d-flex justify-content-center"> 
+                <button type="button" id="sidebarCollapse" class="btnAzul" >     <!-- Boton azul, que colapsa el menu lateral  -->
+                    <span>Confirmar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer  style="background-color: #34b5aa;">
+        <div class="container" >
+            <br><br>
+        </div>
+    </footer>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+
+       
+</body>
+</html>
+
+
