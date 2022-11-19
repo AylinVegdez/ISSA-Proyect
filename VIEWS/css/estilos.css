@@ -26,16 +26,6 @@
     min-width: 125px;
     margin: 18px 0px 13px 26px;
   }
-  .titulo_formulario{
-    padding-top: 20px;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 20px;
-    line-height: 24px;
-    display: flex;
-    border-bottom: black 2px solid;
-  }
 
 /*------------------------------- letras-------------------*/
 .option{
@@ -99,6 +89,14 @@ a:focus {
     color: white;
     letter-spacing: 0px;
     position: relative;
+    margin: 0px 0px 0px 20px;
+  }
+  .tituloForm{
+    font: 700 12px/1.2 "Inter", Helvetica, Arial, serif;
+    color: black;
+    letter-spacing: 0px;
+    position: relative;
+    font-size: 120%;
     margin: 0px 0px 0px 20px;
   }
 .tituloBarra{
@@ -218,6 +216,10 @@ ul.CTAs a {
     position: relative;
     margin: 32px;
 }
+.btn-buscar {
+    margin-right: 0rem; box-sizing: border-box;
+    size-adjust: inherit;
+}
 
 .btnAzul{
     font-family: 'Lato';
@@ -234,15 +236,28 @@ ul.CTAs a {
     margin-top: 50px;
     letter-spacing:0.05em
     }
+    .etiquetaAzul{
+        font-family: 'Lato';
+        font-style: normal;
+        font-size: .9rem;
+        font-weight: 800;
+        align-content: space-between;
+        text-align: justify;
+        color: #ffffff; /* Color del texto */
+        background: #34B5AA;
+        border-end-end-radius: 20px;
+        border-start-end-radius: 20px;
+        border-color: #ffffff00;
+        padding: 13px 28px; /* Relleno del boton */
+        letter-spacing:0.02em
+        }
     
 .btnAzul:hover {
 	background-color: #31dbcd; /* Color de fondo al pasar el cursor */
 	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
 	transform: translateY(-7px);
-}
-.buscar:hover{
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-	transform: translateY(-7px);
+  
+
 }
 /*boton flotante*/
 .btn-flotante {
@@ -272,17 +287,8 @@ ul.CTAs a {
 
 .icono{
    color: white;
-   font-size: calc(1em + 1vw);
+   font-size: calc(1em + 1vw)
 }
-.iconoTrahs{
-    font-size: calc(1em + 0.7vw);
-    color: rgb(255, 0, 0);
- }
- .iconoEdit{
-    font-size: calc(1em + 0.7vw);
-    color: rgb(20, 144, 216);
-    padding-left: 5px;
- }
 .pager{
     text-decoration:none;
     color: black;
@@ -310,31 +316,6 @@ ul.CTAs a {
     text-align: center;
     align-items: center;
 }
-.titulo{
-    background: #6FA84B;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 22px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: white;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-.buscar{
-    background: #34B5AA;
-    border-radius: 10px;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 900;
-    font-size: 15px;
-    line-height: 18px;
-    color: #FFFFFF;
-    border: none;
-}
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
@@ -349,14 +330,6 @@ ul.CTAs a {
     #sidebarCollapse span {
         display: none;
     }
-  #titulo{
-        font-weight: 400;
-        font-size: 10px;
-        display: flex;
-        padding-left: 15px;
-        padding-right: 12px;
-    }
-
 }
 
 @media only screen and (max-width: 600px) {
@@ -364,66 +337,4 @@ ul.CTAs a {
     #sidebarCollapse span {
         display: none;
     }
-    
 }
-
-
-
-.search{
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    background: black;
-    padding: 30px;
-    border-radius: 65px;
-    border: none;
-    display: flex;
-    align-items: center;
-}
-.submit{
-    font-size: 40px;
-    cursor: pointer;
-    color: white;
-    background: none;
-    border: none;
-    
-}
-.search-txt{
-    width: 0;
-    font-size: 36px;
-    border: none;
-    background: transparent;
-    outline: none;
-    transition: 1s;
-}
-::placeholder{
-    color: rgba(0, 0, 0, 0.252);
-}
-.active{
-    background: white;
-}
-.active .submit{
-    color: black;
-    float: right;
-}
-.active .search-txt{
-  width: 350px;
-  padding: 0 20px;
-}
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-
