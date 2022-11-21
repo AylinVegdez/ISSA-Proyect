@@ -120,6 +120,24 @@ a:focus {
     align-items: stretch;
 }
 
+.label_etq {
+    display: flex;
+    text-align: center;
+    font-family: 'loto';
+ 
+    background-color: white;
+    
+    border-radius: 12px;
+
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.247);
+    position: relative;
+    margin: 62px 10.05% 62px 11.31%;
+
+
+    padding: 125px;
+    
+}
+
 #sidebar {
     min-width: 230px;
     max-width: 250px;
