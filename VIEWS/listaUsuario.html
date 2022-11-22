@@ -43,27 +43,29 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-               <img class="logo" src="img/lOGOact.png">
+                <a href="Menuusuario.html">
+                    <img class="logo"  src="img/lOGOact.png">
+                </a>
             </div>
 
             <ul class="list-unstyled ">
-                <li class="active option">
-                    <a href="#">GENERAR LISTA</a>
+                <li class="option active">
+                    <a href="listaUsuario.html" >GENERAR LISTA</a>
                 </li>
                 <li class="option">
-                    <a href="#" >EVALUACIÓN TRIMESTRAL</a>
+                    <a href="evaluacionAlumno.html" >EVALUACIÓN TRIMESTRAL</a>
                 </li>
             </ul>
         </nav>
         <!-- Page Content  -->
         <div id="content" >     
-            <button type="button" id="sidebarCollapse" class="btn btn-info">     <!-- Boton azul, que colapsa el menu lateral  -->
+            <button type="button" id="sidebarCollapse" class="btn btn-info"  >     <!-- Boton azul, que colapsa el menu lateral  -->
                 <i class="fas fa-align-left"></i>
                 <span style="padding: 1px 1px 1px 1px;"></span>
             </button>
-            <a href="" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;">           <!-- flotante de usuario  -->
+            <a href="#" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;" onclick="CerrarSesiones()">           <!-- flotante de usuario  -->
                 <i class="bi bi-person-circle icono"></i>
-                <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+                <span style="padding: 1px 1px 1px 1px;" >nombre_usuario</span>
             </a>
         <!--Table-->
             <div class="container" style="padding-left: 30px; padding-right: 30px;">
@@ -82,20 +84,9 @@
                         <tbody style="text-align: center;">
                         <tr>
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
+                            <td><a href="informacionAlumno.html">Mark</a></td>
+                            <td><a href="#"><i class="bi bi-file-earmark-bar-graph-fill"></i></a></td>
+                            <td><a href="#"><i class="bi bi-file-earmark-arrow-down"></i></a></td>
                         </tr>
                         </tbody>
                     </table>
@@ -134,6 +125,9 @@
             });
         });
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/cerrarSesiones.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
 
        
 </body>

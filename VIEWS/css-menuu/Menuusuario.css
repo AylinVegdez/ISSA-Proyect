@@ -68,7 +68,7 @@
   }
 }
 
-.col {
+.coll {
   display: flex;
   flex-direction: column;
   width: 41.39%;
@@ -77,7 +77,7 @@
   margin: 135px auto 0px;
 }
 @media (max-width: 575px) {
-  .col {
+  .coll {
     width: 45.67%;
     margin: 135px 32.36% 0px 21.97%;
   }
@@ -352,9 +352,9 @@
 }
 
 .btn {
-  display: flex;
   align-items: center;
   justify-content: center;
+  display: flex;
   flex-direction: column;
   background-color: #34b5aa;
   width: 195px;
@@ -472,7 +472,7 @@
   margin: 8.5px 9px;
 }
 
-.col > .item {
+.coll > .item {
   display: flex;
   flex-direction: column;
   position: relative;
