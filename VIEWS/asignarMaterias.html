@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,44 +43,46 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <img class="logo" src="img/lOGOact.png" >
+                <a href="adminMenuP.html">
+                    <img class="logo"  src="img/lOGOact.png">
+                </a>
             </div>
 
             <ul class="list-unstyled ">
-                <li class="option">
-                    <a href="#" >PROFESORES</a>
+                <li class="option ">
+                    <a href="adminProfesores.html" >PROFESORES</a>
                 </li>
-                <li class="option">
+                <li class="option ">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">GRUPOS</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">1° - Primero </a>
+                            <a href="adminGrupos.html">1° - Primero </a>
                         </li>
                         <li>
-                            <a href="#">2° - Segundo </a>
+                            <a href="adminGrupos.html">2° - Segundo </a>
                         </li>
                         <li>
-                            <a href="#">3° - Tercero </a>
+                            <a href="adminGrupos.html">3° - Tercero </a>
                         </li>
                         <li>
-                            <a href="#">4° - Cuarto </a>
+                            <a href="adminGrupos.html">4° - Cuarto </a>
                         </li>
                         <li>
-                            <a href="#">5° - Quinto </a>
+                            <a href="adminGrupos.html">5° - Quinto </a>
                         </li>
                         <li>
-                            <a href="#">6° - Sexto </a>
+                            <a href="adminGrupos.html">6° - Sexto </a>
                         </li>
                     </ul>
                 </li>
-                <li  class="option">
-                    <a href="#">ALUMNOS</a>
+                <li class="option">
+                    <a href="adminAlumos.html">ALUMNOS</a>
                 </li>
                 <li class="option active">
-                    <a href="#" >MATERIAS</a>
+                    <a href="adminMaterias.html" >MATERIAS</a>
                 </li>
                 <li class="option">
-                    <a href="#" >CALIFICACIONES</a>
+                    <a href="adminCalificaciones.html" >CALIFICACIONES</a>
                 </li>
             </ul>
         </nav>
@@ -114,9 +116,9 @@
                         </div>
 
                         <div class="justify-content-end" >
-                            <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
+                            <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;" onclick="Guardar()">
                                 <i class="bi bi-arrow-bar-up"></i>
-                                <span>Asignar Grupo</span>
+                                <span>Agregar Materia</span>
                             </button>
                         </div>
                        
@@ -147,8 +149,10 @@
             });
         });
     </script>
-
-       
+   
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script src="js/guardar.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
 

@@ -353,6 +353,8 @@
 
 .btn {
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   background-color: #34b5aa;
   width: 195px;

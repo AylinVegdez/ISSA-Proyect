@@ -1,4 +1,6 @@
-const swalWithBootstrapButtons = Swal.mixin({
+function Eliminar()
+{
+  const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
       confirmButton: 'btn btn-success',
       cancelButton: 'btn btn-danger'
@@ -7,16 +9,16 @@ const swalWithBootstrapButtons = Swal.mixin({
   })
   
   swalWithBootstrapButtons.fire({
-    title: '¿Estas seguro?',
-    text: "No podrás revertir esta accioón",
+    title: '¿Estás seguro?',
+    text: "No podrás revertir esta acción",
     icon: 'warning',
     showCancelButton: true,
-    cancelButtonText: 'No,  Cancelar',
-    confirmButtonText: 'Si,  Eliminar',
+    cancelButtonText: 'No. Cancelar',
+    confirmButtonText: 'Sí. Eliminar',
   }).then((result) => {
     if (result.isConfirmed) {
       swalWithBootstrapButtons.fire(
-        'Eliminado!',
+        '¡Eliminado!',
         'El registro ha sido eliminado.',
         'success'
       )
@@ -31,3 +33,5 @@ const swalWithBootstrapButtons = Swal.mixin({
       )
     }
   })
+}
+

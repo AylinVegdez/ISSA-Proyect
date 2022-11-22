@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="./css/common.css" />
     <link rel="stylesheet" type="text/css" href="./css/fonts.css" />
     <link rel="stylesheet" type="text/css" href="./css/estilos.css" />
-    <!--ICONOS BOOSTRAP-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- CSS only -->
     <!-- Our Custom CSS -->
@@ -28,6 +29,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+   
     <title>AGREGAR PROFESOR</title>
 </head>
 
@@ -43,44 +46,46 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <img class="logo" src="img/lOGOact.png">
+                <a href="adminMenuP.html">
+                    <img class="logo"  src="img/lOGOact.png">
+                </a>
             </div>
 
             <ul class="list-unstyled ">
                 <li class="option active">
-                    <a href="#" >PROFESORES</a>
+                    <a href="adminProfesores.html" >PROFESORES</a>
                 </li>
-                <li class="option">
+                <li class="option ">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">GRUPOS</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">1° - Primero </a>
+                            <a href="adminGrupos.html">1° - Primero </a>
                         </li>
                         <li>
-                            <a href="#">2° - Segundo </a>
+                            <a href="adminGrupos.html">2° - Segundo </a>
                         </li>
                         <li>
-                            <a href="#">3° - Tercero </a>
+                            <a href="adminGrupos.html">3° - Tercero </a>
                         </li>
                         <li>
-                            <a href="#">4° - Cuarto </a>
+                            <a href="adminGrupos.html">4° - Cuarto </a>
                         </li>
                         <li>
-                            <a href="#">5° - Quinto </a>
+                            <a href="adminGrupos.html">5° - Quinto </a>
                         </li>
                         <li>
-                            <a href="#">6° - Sexto </a>
+                            <a href="adminGrupos.html">6° - Sexto </a>
                         </li>
                     </ul>
                 </li>
-                <li  class="option">
-                    <a href="#">ALUMNOS</a>
-                </li>
                 <li class="option">
-                    <a href="#" >MATERIAS</a>
+                    <a href="adminAlumos.html">ALUMNOS</a>
                 </li>
-                <li class="option">
-                    <a href="#" >CALIFICACIONES</a>
+                <li class="option ">
+                    <a href="adminMaterias.html" >MATERIAS</a>
+                </li>
+                <li class="option ">
+                    <a href="adminCalificaciones.html" >CALIFICACIONES</a>
                 </li>
             </ul>
         </nav>
@@ -127,7 +132,7 @@
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Contraseña</label></div>
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="password" placeholder="Contraseña" aria-label="Buscar" ></div>
                             <div class="justify-content-end" >
-                                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
+                                <button type="button" id="alertguardar" class="btnAzul" style="right: 40px;" onclick="Guardar()">
                                     <i class="bi bi-arrow-bar-up"></i>
                                     <span>Agregar Profesor</span>
                                 </button>
@@ -155,7 +160,7 @@
 
     </footer>
 
-
+    
     <script>
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
@@ -163,6 +168,11 @@
             });
         });
     </script>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script src="js/guardar.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
+     <!--ICONOS BOOSTRAP-->
+    
 
        
 </body>

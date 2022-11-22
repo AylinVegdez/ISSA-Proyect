@@ -1,4 +1,6 @@
-Swal.fire({
+function registroExito()
+{
+  Swal.fire({
     position: 'center',
     icon: 'success',
     title: 'Se ha registrado con éxito :)',
@@ -8,3 +10,6 @@ Swal.fire({
     allowEscapeKey:false,
     alloeWnterKey:false,
   })
+
+}
+  

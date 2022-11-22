@@ -1,4 +1,6 @@
-Swal.fire({
+function CerrarSesion()
+{
+  Swal.fire({
     position: 'top-end',
     confirmButtonText: 'Continuar',
     denyButtonText: `Cerrar Sesioón`,
@@ -13,3 +15,4 @@ Swal.fire({
         popup: 'animate__animated animate__fadeOutUp'
       }
   })
+}
