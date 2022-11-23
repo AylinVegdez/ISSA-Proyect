@@ -6,7 +6,7 @@ function CerrarSesion(){
         '<body>'+
             '<div class="container">'+
                 '<div class="text-center" >'+
-                    '<img src="https://cdn.icon-icons.com/icons2/2596/PNG/512/check_one_icon_155665.png"'+
+                    '<img src="img/LOGOact.png"'+
                     'style="width: 200px;" alt="logo">'+
                     '<div style="padding-top:30px">'+
                         '<button  disabled style="box-sizing: border-box;  border-color: #b44593;border: 1px solid rgba(0, 0, 0, 0.2);'+
