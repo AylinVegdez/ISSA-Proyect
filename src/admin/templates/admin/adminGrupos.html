@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/searchStyle.css' ) }}">
+    <!--ICONOS BOOSTRAP-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- CSS only -->
+    <!-- Our Custom CSS -->
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <title>ADMIN GRUPOS</title>
+</head>
+
+<body style=" background-color: #e6e6e6;">
+
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-light m-auto" style="background-color:#34b5aa">
+        <div class="container"><br></div>
+        </nav>
+      
+      </header>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="/admin/paginaprincipal">
+                    <img class="logo"  src="/static/img/lOGOact.png">
+                </a>
+            </div>
+
+            <ul class="list-unstyled ">
+                <li class="option  ">
+                    <a href="/admin/profesores" >PROFESORES</a>
+                </li>
+                <li class="option active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">GRUPOS</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="/admin/grupos">1° - Primero </a>
+                        </li>
+                        <li>
+                            <a href="/admin/grupos">2° - Segundo </a>
+                        </li>
+                        <li>
+                            <a href="/admin/grupos">3° - Tercero </a>
+                        </li>
+                        <li>
+                            <a href="/admin/grupos">4° - Cuarto </a>
+                        </li>
+                        <li>
+                            <a href="/admin/grupos">5° - Quinto </a>
+                        </li>
+                        <li>
+                            <a href="/admin/grupos">6° - Sexto </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="option">
+                    <a href="/admin/alumnos">ALUMNOS</a>
+                </li>
+                <li class="option">
+                    <a href="/admin/materias" >MATERIAS</a>
+                </li>
+                <li class="option">
+                    <a href="/admin/calificaciones" >CALIFICACIONES</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" >     
+            <button type="button" id="sidebarCollapse" class="btn btn-info">     <!-- Boton azul, que colapsa el menu lateral  -->
+                <i class="fas fa-align-left"></i>
+                <span style="padding: 1px 1px 1px 1px;"></span>
+            </button>
+
+            <a href="#" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;" onclick="CerrarSesiones()">           <!-- flotante de usuario  -->
+                <i class="bi bi-person-circle icono"></i>
+                <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+            </a>
+                    
+        <!--Table-->
+            <div class="container" style="padding-left: 30px; padding-right: 30px;">
+                <div class="h-100">
+                    <div class="d-flex justify-content-star h-100 " style="padding-bottom: 20px; ">
+                        <label class="search_label">CONTROL GRUPOS</label>
+                      <div class="searchbar">
+                        <input class="search_input" type="text" name="" placeholder="Buscar Grupo...">
+                        <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+                      </div>
+                    </div>
+                  </div>
+
+                <!--  class="active" -->
+                <div class="table-responsive" style="padding-top:5px;" >
+                    <table class="table table-light">
+                        <thead style="background-color: #6FA84B;text-align: center;">
+                            <tr>
+                                <th scope="col" class="tituloTable">Clave</th>
+                                <th scope="col" class="tituloTable">Nombre Profesor</th>
+                                <th scope="col" class="tituloTable">Grupo</th>
+                                <th scope="col" class="tituloTable" colspan="2">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center;">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td><a href="#" onclick="Actualizar()"><i class="bi bi-pencil-square iconoEdit"></i></a></td>
+                                <td><a href="#" onclick="Eliminar()"><i class="bi bi-trash-fill iconoTrahs"></i></a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+             <div class="container d-flex justify-content-end">
+                <a href="/admin/asignar_grupo">
+                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">    
+                    <i class="bi bi-person-lines-fill" style="font-size: calc(0.7em + 0.5vw);"></i>
+    
+                    <span>Asignar</span>
+                </button>
+            </a>
+            </div>
+        
+       
+ 
+        </div>
+    </div>
+
+    <footer  style="background-color: #34b5aa;">
+
+        <div class="container" >
+            <br><br>
+        </div>
+
+    </footer>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script src="/static/js/guardar.js"></script>
+     <script src="/static/js/eliminar.js"></script>
+     <script src="/static/js/cerrarSesiones.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
+       
+</body>
+</html>
+
+

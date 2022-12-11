@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<!--  This source code is exported from pxCode, you can get more document from https://www.pxcode.io  -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css-menuu/common.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css-menuu/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css-menuu/Menuusuario.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/headroom.js@0.12.0/dist/headroom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/px2code/posize/build/v1.01.0.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!-- CSS only -->
+    <!-- Our Custom CSS -->
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class="flex-column">
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-light m-auto" style="background-color:#34b5aa">
+        <div class="container"><br></div>
+        </nav>
+    </header>
+    <div class="menuusuario root">
+        <a href="#" class="btn-flotante"  id="sidebarCollapse" style="text-decoration:none;"  onclick="CerrarSesiones()">           <!-- flotante de usuario  -->
+            <i class="bi bi-person-circle icono" ></i>
+            <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+        </a>
+        <div class="coll">
+            <div class="content_box">
+                <div class="content_box1">
+                    <div class="row1">
+                        <div class="item">
+                            <img class="image" src="/static/assets-menuu/5549e46a7f019013a04ab1e6bfb9901f.png" alt="alt text" />
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="item1">
+                            <div class="info1">TEXTO</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row2">
+                    <div class="item">
+                        <img class="image1" src="/static/assets-menuu/a0fb241ff27717f8c773104194218c8c.png" alt="alt text" />
+                    </div>
+                    <div class="info2">FECHA<br /></div>
+                </div>
+            </div>
+            <div class="row3">
+                <div class="item">
+                    <div class="content_box5">
+                        <div class="content_box3">
+                            <div class="col1">
+                                <div class="item">
+                                    <div class="content_box11" style="--src:url(../assets-menuu/64c2401e23a5876d0b1ea82ec908977b.png)">
+                                        <img class="image3" src="/static/assets-menuu/5d6e3460b103ec6fd9623c1aa3b3697d.png" alt="alt text" />
+                                    </div>
+                                </div>
+                                <a href="/usuario/lista">
+                                <button class="btn">
+                                    <span class="btn__text">Lista de Alumnos</span>
+                                </button>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="spacer"></div>
+                <div class="item">
+                    <div class="content_box6">
+                        <div class="content_box4">
+                            <div class="col2">
+                                <div class="content_box2" style="--src:url(../assets-menuu/64c2401e23a5876d0b1ea82ec908977b.png)">
+                                    <img class="image4" src="/static/assets-menuu/9549e5872a0ac03b6b4e47989dccd08a.png" alt="alt text" />
+                                </div>
+                                <div class="item">
+                                    <a href="/usuario/evaluacion">
+                                    <button class="btn1">
+                                        <span class="btn__text1">Evaluación Trimestral</span>
+                                    </button>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <px-grid track-style="flex-grow: 1;" area-style=":before: [object Object];" x="268fr 117px 274fr" y="76px minmax(0px, max-content) 0px" xs-x="131fr 117px 22fr" xs-y="76px minmax(0px, max-content) 0px"><img class="icon" src="./assets-menuu/bb52da5480aef9998c1a000e7512e91b.png" alt="alt text" /></px-grid>
+            </div>
+        </div>
+    </div>
+    <footer  style="background-color: #34b5aa;">
+
+        <div class="container" >
+            <br><br>
+        </div>
+
+    </footer>
+    <script type="text/javascript">
+        AOS.init();
+    </script>
+     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <script src="/static/js/cerrarSesiones.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
+</body>
+
+</html>
