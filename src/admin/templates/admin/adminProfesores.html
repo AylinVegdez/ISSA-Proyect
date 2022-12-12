@@ -123,13 +123,15 @@
                             </tr>
                         </thead>
                         <tbody style="text-align: center;">
+                             {% for profesor in profesores: %}
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
+                                <th scope="row">{{ profesor["cveprof"] }}</th>
+                                <td>{{ profesor["prof_nombre"] }}</td>
                                 <td>Otto</td>
                                 <td><a href="#" onclick="Actualizar()"><i class="bi bi-pencil-square iconoEdit"></i></a></td>
                                 <td><a href="#" onclick="Eliminar()"><i class="bi bi-trash-fill iconoTrahs"></i></a></td>
                             </tr>
+                            {% endfor %}
 
                         </tbody>
                     </table>

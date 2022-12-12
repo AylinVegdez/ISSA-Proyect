@@ -3,11 +3,11 @@ from ..extensiones import db
 from ..models import Profesor
 
 #Definir blue print para cliente
-profesor = Blueprint('PROFESOR',__name__)
+profesor = Blueprint('profesor',__name__)
 #Definir la ruta CLIENTES
 @profesor.route('/api/profesores',methods=['GET','POST'])
 def consultar_profesor():
-    profesores=db.session.query(profesor).all()
+    profesores=db.session.query(Profesor).all()
     print(profesores)
     return {'mensaje':'Consultando Profesores'}
 #Definir la ruta CLIENTES

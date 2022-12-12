@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 #definir el Blueprint
 
 from . import inicio, agregarprofesor, agregaralumno, asignargrupo, asignarmateria
@@ -7,6 +7,8 @@ from . import adminalumno
 from . import adminmateria
 from . import adminprofesor
 from . import admincalificacion
+from ..models import Profesor
+from ..extensiones import db
 
 
 #crear los endpoints
@@ -18,10 +20,15 @@ def inicioprincipal():
 
 @adminprofesor.route('/profesores')
 def inicio_profesores():
-    return render_template('/admin/adminProfesores.html')
+    profesores = db.session.query(Profesor.cveprof, Profesor.prof_nombre).all()
+    for prof in profesores:
+        print(prof["cveprof"])
+
+    return render_template('/admin/adminProfesores.html', profesores = profesores)
 
 @admingrupo.route('/grupos')
 def inicio_grupos():
+
     return render_template('/admin/adminGrupos.html')
 
 
@@ -41,6 +48,29 @@ def inicio_alumnos():
 @agregarprofesor.route('/agregar_profesor')
 def agregar_profesor():
     return render_template('/admin/agregarprofesor.html')
+
+
+
+
+@agregarprofesor.route('/profesor_agregado', methods=['POST'])
+def profesor_agregado():
+    if request.method == 'POST':
+        if request.form["Sexo"] == "Hombre":
+           sexo = 'H'
+        else:
+           sexo = 'M'
+        json_profesor = {
+            "nombre": request.form["nombre"] +" "+request.form["apellidop"]+" "+request.form["apellidom"],
+            "sexo": sexo,
+            "nombre_usuario": request.form["usuario"],
+            "clave": request.form["contrasena"]
+        }
+        profesor = Profesor()
+        print(json_profesor)
+        profesor.registrar_profesor(json_profesor)
+        return redirect(url_for('agregarprofesor.agregar_profesor'))
+    else:
+        return 'no holis'
 
 @agregaralumno.route('/agregar_alumno')
 def agregar_alumno():
