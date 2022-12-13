@@ -105,27 +105,27 @@
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  "  name = "nameAlumno"style="margin-top: .29rem;" type="text" placeholder="Nombre del Profesor" aria-label="Buscar" ></div>
+                                <input required class="form-control me-2 buscador  "  name = "nameAlumno"style="margin-top: .29rem;" type="text" placeholder="Nombre del Alumno" aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Paterno</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  " name="apellidoP"style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" ></div>
+                                <input required class="form-control me-2 buscador  " name="apellidoP"style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Materno</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  "  name="apellidoM"style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" ></div>
+                                <input required class="form-control me-2 buscador  "  name="apellidoM"style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >CURP</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  "  name="curp"style="margin-top: .29rem;" type="text" placeholder="CURP" aria-label="Buscar" ></div>
+                                <input required class="form-control me-2 buscador  "  name="curp"style="margin-top: .29rem;" type="text" placeholder="CURP" aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Edad</label></div>
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Edad" aria-label="Buscar"  name="edad" ></div>
+                                <input required  class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Edad" aria-label="Buscar"  name="edad" ></div>
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Sexo</label></div>
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="Sexo">
                                 <option>Hombre</option>
@@ -136,7 +136,7 @@
                             <div class="row mb-3 text-center">
                                 <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Clave Grupo</label></div>
                                 <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                    <input class="form-control me-2 buscador  "  name="grado" style="margin-top: .29rem;" type="number" min="1" placeholder="clave" aria-label="Buscar" ></div>
+                                    <input required class="form-control me-2 buscador  "  name="grado" style="margin-top: .29rem;" type="number" min="1" placeholder="clave" aria-label="Buscar" ></div>
     
                                 <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grupo</label></div>
                                 
@@ -146,12 +146,13 @@
                                         <option>B</option>
                                       </select></div>
     
-                                <div class="justify-content-end" >
-                                    <button type="submit" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
-                                        <i class="bi bi-arrow-bar-up"></i>
-                                        <span>Agregar Alumno</span>
-                                    </button>
-                                </div>
+
+                            </div>
+                            <div class="justify-content-end" style="padding-top:30px; padding-bottom: 10px;">
+                                <button type="submit" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
+                                    <i class="bi bi-arrow-bar-up"></i>
+                                    <span>Agregar Alumno</span>
+                                </button>
                             </div>
 
                        
@@ -170,11 +171,9 @@
     </div>
 
     <footer  style="background-color: #34b5aa;">
-
-        <div class="container" >
-            <br><br>
+        <div class="container p-4" >
+            
         </div>
-
     </footer>
 
 

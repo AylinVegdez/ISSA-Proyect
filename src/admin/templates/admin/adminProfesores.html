@@ -101,15 +101,17 @@
                     
         <!--Table-->
             <div class="container" style="padding-left: 30px; padding-right: 30px;">
-                <div class="h-100">
-                    <div class="d-flex justify-content-star h-100 " style="padding-bottom: 20px; ">
-                        <label class="search_label">CONTROL PROFESORES</label>
-                      <div class="searchbar">
-                        <input class="search_input" type="text" name="" placeholder="Nombre del profesor...">
-                        <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
-                      </div>
+                <div class="d-flex justify-content-star">
+                    <label class="search_label">CONTROL PROFESORES
+                    </label>
+                    <div class="input-box">    
+                        <input type="text" placeholder="Profesor" style="font-size: 10px;">
+                        <span class="icon">
+                            <i class="fa fa-search search-icon"></i>
+                        </span>
+                        <i class="close-icon bi bi-x-circle" style="color: #34b5aa;"></i>
                     </div>
-                  </div>
+                </div>
 
                 <!--  class="active" -->
                 <div class="table-responsive" style="padding-top:5px;" >
@@ -140,7 +142,7 @@
                 </div>
             </div>
 
-             <div class="container d-flex justify-content-end">
+             <div class="container d-flex justify-content-end" style="padding-bottom: 100px;">
                 <a href="/admin/agregar_profesor">
                 <button type="button" id="" class="btnAzul" style="right: 40px;">
                     <i class="bi bi-person-plus-fill" style="font-size: calc(0.7em + 0.5vw);"></i>
@@ -150,21 +152,25 @@
                 </button>
             </a>
             </div>
-        
-       
  
         </div>
     </div>
 
     <footer  style="background-color: #34b5aa;">
-
         <div class="container p-4" >
-
+            
         </div>
-
     </footer>
 
 
+    <script>
+        let inputBox = document.querySelector(".input-box"),
+            searchIcon = document.querySelector(".icon"),
+            closeIcon = document.querySelector(".close-icon");
+
+        searchIcon.addEventListener("click", () => inputBox.classList.add("open"));
+        closeIcon.addEventListener("click", () => inputBox.classList.remove("open"));
+    </script>
     <script>
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {

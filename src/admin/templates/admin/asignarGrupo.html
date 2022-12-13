@@ -105,14 +105,14 @@
 
                         <div class="row mb-3 text-center" style="margin-top: 40px;">
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem; "><label class="etiquetaAzul d-flex" style="color: white; " >Profesor</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Nombre del profesor" name="nameProf"aria-label="Buscar" ></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Nombre del profesor" name="nameProf"aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" style="margin-top: 50px;">
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grado</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " name="grado" style="margin-top: .29rem;" type="number" min="1" max="6" placeholder="Grado" aria-label="Buscar" ></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input required  class="form-control me-2 buscador  " name="grado" style="margin-top: .29rem;" type="number" min="1" max="6" placeholder="Grado" aria-label="Buscar" ></div>
 
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grupo</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="grupo">
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select required class="form-control me-2 buscador " name="grupo">
                                 <option>A</option>
                                 <option>B</option>
                               </select></div>
@@ -120,7 +120,7 @@
 
                         </div>
 
-                        <div class="justify-content-end" >
+                        <div class="justify-content-end" style="padding-bottom: 100px;" >
                             <button type="submit" id="sidebarCollapse" class="btnAzul" style="right: 40px;" >
                                 <i class="bi bi-arrow-bar-up"></i>
                                 <span>Asignar Grupo</span>
@@ -139,12 +139,11 @@
     </div>
 
     <footer  style="background-color: #34b5aa;">
-
-        <div class="container" >
-            <br><br>
+        <div class="container p-4" >
+            
         </div>
-
     </footer>
+
 
 
     <script>

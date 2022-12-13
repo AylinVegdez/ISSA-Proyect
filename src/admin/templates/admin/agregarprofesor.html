@@ -121,31 +121,31 @@
                          {% if profesores: %}
                               <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >id</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " value="{{id}}" style="margin-top: .29rem;" type="text"  aria-label="Buscar" name="id"></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " value="{{id}}" style="margin-top: .29rem;" type="text"  aria-label="Buscar" name="id"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " value="{{profesores['nombre']}}" style="margin-top: .29rem;" type="text" placeholder="Nombre del Profesor"  aria-label="Buscar" name="nombre"></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " value="{{profesores['nombre']}}" style="margin-top: .29rem;" type="text" placeholder="Nombre del Profesor"  aria-label="Buscar" name="nombre" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Paterno</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  "  style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" name="apellidop"></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  "  style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" name="apellidop"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Materno</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" name="apellidom"></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" name="apellidom"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Edad</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Edad" aria-label="Buscar" name="edad"></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Edad" aria-label="Buscar" name="edad"></div>
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Sexo</label></div>
                             {% if profesores["sexo"] == 'H' %}
-                            <div class="col-3 themed-grid-col"  style="padding-left: 0rem;"><select  class="form-control me-2 buscador " name="Sexo">
+                            <div class="col-3 themed-grid-col"  style="padding-left: 0rem; font-size: 10px;"><select  class="form-control me-2 buscador " name="Sexo">
                                 <option selected>Hombre</option>
                                 <option>Mujer</option>
                               </select></div>
                             {% else: %}
-                             <div class="col-3 themed-grid-col"  style="padding-left: 0rem;"><select  class="form-control me-2 buscador " name="Sexo">
+                             <div class="col-3 themed-grid-col"  style="padding-left: 0rem;font-size: 10px;"><select  class="form-control me-2 buscador " name="Sexo">
                                 <option>Hombre</option>
                                 <option selected>Mujer</option>
                               </select></div>
@@ -154,54 +154,56 @@
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Usuario</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input value="{{ profesores['usuario'] }}" class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Usuario" aria-label="Buscar" name="usuario"></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input  required value="{{ profesores['usuario'] }}" class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Usuario" aria-label="Buscar" name="usuario"></div>
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Contraseña</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="password" placeholder="Contraseña" aria-label="Buscar" name="contrasena"></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " style="margin-top: .29rem;" type="password" placeholder="Contraseña" aria-label="Buscar" name="contrasena"></div>
                             <div class="justify-content-end" >
 
                                 {% else: %}
 
                                     <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " value="" style="margin-top: .29rem;" type="text" placeholder="Nombre del Profesor"  aria-label="Buscar" name="nombre"></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " value="" style="margin-top: .29rem;" type="text" placeholder="Nombre del Profesor"  aria-label="Buscar" name="nombre"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Paterno</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" name="apellidop"></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" name="apellidop"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Materno</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" name="apellidom"></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" name="apellidom"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Edad</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Edad" aria-label="Buscar" name="edad"></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Edad" aria-label="Buscar" name="edad"></div>
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Sexo</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="Sexo">
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select required class="form-control me-2 buscador " name="Sexo">
                                 <option>Hombre</option>
                                 <option>Mujer</option>
                               </select></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Usuario</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Usuario" aria-label="Buscar" name="usuario"></div>
-                            <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Contraseña</label></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input required class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Usuario" aria-label="Buscar" name="usuario"></div>
+                            <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label required class="etiquetaAzul d-flex" style="color: white; " >Contraseña</label></div>
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="password" placeholder="Contraseña" aria-label="Buscar" name="contrasena"></div>
                             <div class="justify-content-end" >
 
                                  {% endif %}
 
-                                <button type="submit" id="alertguardar" href="?idProfeActualizar={{id}}" class="btnAzul" style="right: 40px;">
-                                    <i class="bi bi-arrow-bar-up"></i>
-                                    {% if bandera: %}
-                                    <span>Agregar Profesor</span>
-                                    {% else: %}
-                                    <span>Actualizar Profesor</span>
-                                    {% endif %}
-
-                                </button>
+                                
                             </div>
                         </div>
+
+                        <button type="submit" id="alertguardar" href="?idProfeActualizar={{id}}" class="btnAzul" style="right: 40px; padding-top:30px; padding-bottom: 10px;">
+                            <i class="bi bi-arrow-bar-up"></i>
+                            {% if bandera: %}
+                            <span>Agregar Profesor</span>
+                            {% else: %}
+                            <span>Actualizar Profesor</span>
+                            {% endif %}
+
+                        </button>
 
                      
                     </form> 
@@ -217,11 +219,9 @@
     </div>
 
     <footer  style="background-color: #34b5aa;">
-
-        <div class="container" >
-            <br><br>
+        <div class="container p-4" >
+            
         </div>
-
     </footer>
 
     
