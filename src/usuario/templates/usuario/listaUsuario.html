@@ -96,29 +96,23 @@
                 </div>
             </div>
         <!-- Search form -->
-            <div class="container input-group mx-auto" style="margin-top: 30px;"> 
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1" >Buscar Alumno</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
+     <div class="container flex-container" style="padding-bottom: 40px;">
+             
+                <div class="search-box" style="margin-top: 30px;">
+                    <button class="btn-search"><i class="fas fa-search"></i></button>
+                    <input type="text" class="input-search" placeholder="Buscar alumno...">
+                  </div>
+                
             <div class="container d-flex justify-content-end">
                 <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">     <!-- Boton azul, que colapsa el menu lateral  -->
                     <i class="bi bi-person" style="font-size: calc(0.7em + 0.5vw);"></i>
                     <span>Imprimir Relación</span>
                 </button>
             </div>
+        </div>
 
         </div>
     </div>
-
-    <footer  style="background-color: #34b5aa;">
-
-        <div class="container p-4" >
-            
-        </div>
-
-    </footer>
 
 
     <script>
@@ -132,8 +126,16 @@
     <script src="/static/js/cerrarSesiones.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
 
+
        
 </body>
+    <footer  style="background-color: #34b5aa;">
+
+        <div class="container p-4" >
+            
+        </div>
+
+    </footer>
 </html>
 
 
