@@ -30,8 +30,12 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     
-   
+   {% if bandera: %}
     <title>AGREGAR PROFESOR</title>
+    {% else: %}
+     <title>ACTUALIZAR PROFESOR</title>
+    {% endif %}
+
 </head>
 
 <body style=" background-color: #e6e6e6;">
@@ -100,14 +104,66 @@
                 <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
             </a>
             <div class="container" style="margin-top: 20px;padding-left: 30px; padding-right: 30px; padding-top: 30px;padding-bottom: 30px; background-color: #FFF8F8;">
+                {% if bandera: %}
+                    <form  role="NombreProfesor"  method="POST" action="profesor_agregado" onsubmit="return submitForm(this);">
+                    {% else: %}
+                        <form  role="NombreProfesor" method="POST" action="profesor_actualizado" onsubmit="return submitForm(this);">
+                            {% endif %}
+                {% if bandera: %}
                 <h2 class="tituloForm" >AGREGAR PROFESOR</h2>
+                {% else: %}
+                <h2 class="tituloForm" >ACTUALIZAR PROFESOR</h2>
+                {% endif %}
                 <hr size="8rem" color="black" style="margin: .5rem;"></hr>
                 
                 <!-- <form class="d-flex" role="NombreProfesor" style=" align-items: center; padding-right: 3rem; padding-left: 3rem; padding-top: 1rem; position: relative;" > -->
-                    <form  role="NombreProfesor" method="POST" action="profesor_agregado" onsubmit="return submitForm(this);">
+
+                         {% if profesores: %}
+                              <div class="row mb-3 text-center" >
+                            <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >id</label></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " value="{{id}}" style="margin-top: .29rem;" type="text"  aria-label="Buscar" name="id"></div>
+                        </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Nombre del Profesor" aria-label="Buscar" name="nombre"></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " value="{{profesores['nombre']}}" style="margin-top: .29rem;" type="text" placeholder="Nombre del Profesor"  aria-label="Buscar" name="nombre"></div>
+                        </div>
+                        <div class="row mb-3 text-center" >
+                            <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Paterno</label></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  "  style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" name="apellidop"></div>
+                        </div>
+                        <div class="row mb-3 text-center" >
+                            <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Materno</label></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" name="apellidom"></div>
+                        </div>
+                        <div class="row mb-3 text-center" >
+                            <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Edad</label></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Edad" aria-label="Buscar" name="edad"></div>
+                            <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Sexo</label></div>
+                            {% if profesores["sexo"] == 'H' %}
+                            <div class="col-3 themed-grid-col"  style="padding-left: 0rem;"><select  class="form-control me-2 buscador " name="Sexo">
+                                <option selected>Hombre</option>
+                                <option>Mujer</option>
+                              </select></div>
+                            {% else: %}
+                             <div class="col-3 themed-grid-col"  style="padding-left: 0rem;"><select  class="form-control me-2 buscador " name="Sexo">
+                                <option>Hombre</option>
+                                <option selected>Mujer</option>
+                              </select></div>
+                            {% endif %}
+
+                        </div>
+                        <div class="row mb-3 text-center" >
+                            <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Usuario</label></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input value="{{ profesores['usuario'] }}" class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Usuario" aria-label="Buscar" name="usuario"></div>
+                            <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Contraseña</label></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="password" placeholder="Contraseña" aria-label="Buscar" name="contrasena"></div>
+                            <div class="justify-content-end" >
+
+                                {% else: %}
+
+                                    <div class="row mb-3 text-center" >
+                            <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " value="" style="margin-top: .29rem;" type="text" placeholder="Nombre del Profesor"  aria-label="Buscar" name="nombre"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Paterno</label></div>
@@ -133,9 +189,16 @@
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="password" placeholder="Contraseña" aria-label="Buscar" name="contrasena"></div>
                             <div class="justify-content-end" >
 
-                                <button type="submit" id="alertguardar" class="btnAzul" style="right: 40px;">
+                                 {% endif %}
+
+                                <button type="submit" id="alertguardar" href="?idProfeActualizar={{id}}" class="btnAzul" style="right: 40px;">
                                     <i class="bi bi-arrow-bar-up"></i>
+                                    {% if bandera: %}
                                     <span>Agregar Profesor</span>
+                                    {% else: %}
+                                    <span>Actualizar Profesor</span>
+                                    {% endif %}
+
                                 </button>
                             </div>
                         </div>

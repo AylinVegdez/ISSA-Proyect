@@ -35,3 +35,26 @@ function Eliminar()
   })
 }
 
+
+function submitFormEliminar(form) {
+        Swal.fire({
+            title: "Eliminar",
+            text: "¿Desea eliminar el registro?",
+            icon: "warning",
+            showDenyButton: true,
+            denyButtonText: "Cancelar",
+            confirmButtonText: 'Aceptar',
+            buttons: true,
+            dangerMode: true,
+        })
+        .then(function (result) {
+            if (result.isConfirmed) {
+                form.submit();
+                Swal.fire('¡Guardado!', 'Cambios realizados', 'success')
+            }
+            else if(result.isDenied){
+             Swal.fire('Opps', 'Los cambios no fueron realizados', 'info')
+
+            }
+        });
+          return false;

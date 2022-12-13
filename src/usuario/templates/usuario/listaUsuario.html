@@ -83,12 +83,14 @@
                         </tr>
                         </thead>
                         <tbody style="text-align: center;">
+                            {% for usuario in usuarios: %}
                         <tr>
-                            <th scope="row">1</th>
-                            <td><a href="/usuario/informacion">Mark</a></td>
+                            <th scope="row">{{ usuario["cve_alum"] }}</th>
+                            <td><a href="/usuario/informacion">{{ usuario["alum_nombre"] }}</td></a></td>
                             <td><a href="#"><i class="bi bi-file-earmark-bar-graph-fill"></i></a></td>
-                            <td><a href="#"><i class="bi bi-file-earmark-arrow-down"></i></a></td>
+                            <td><a href="?idUsuario={{usuarios.cve_alum}}"><i class="bi bi-file-earmark-arrow-down"></i></a></td>
                         </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -112,8 +114,8 @@
 
     <footer  style="background-color: #34b5aa;">
 
-        <div class="container" >
-            <br><br>
+        <div class="container p-4" >
+            
         </div>
 
     </footer>

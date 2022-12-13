@@ -122,14 +122,18 @@
                             </tr>
                         </thead>
                         <tbody style="text-align: center;">
+                            {% for alumno in alumnos: %}
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                                {%set nom = alumno["alum_nombre"] + " " + alumno["alum_apellidop"]%}
+                                {% set nom = nom +" " + alumno["alum_apellidom"]%}
+
+                                <th scope="row">{{ alumno["cve_alum"] }}</th>
+                                <td>{{ nom }}</td>
+                                <td>{{ alumno["cvegrupo"] }}</td>
                                 <td><a href="#" onclick="Actualizar()"><i class="bi bi-pencil-square iconoEdit"></i></a></td>
                                 <td><a href="#" onclick="Eliminar()"><i class="bi bi-trash-fill iconoTrahs"></i></a></td>
                             </tr>
-
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

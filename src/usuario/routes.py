@@ -4,7 +4,8 @@
 from flask import render_template, request
 
 from . import iniciousuario, evaluacion, informacion, lista
-
+from ..models import Alumno
+from ..extensiones import db
 
 #definir el Blueprint
 
@@ -29,5 +30,12 @@ def inicio_informacion():
 
 @lista.route('/lista')
 def inicio_lista():
+    usuarios = db.session.query(Alumno.cve_alum, Alumno.alum_nombre, Alumno).all()
+    print(usuarios)
+    if (request.args.get('idUsuario') != None):
+        usuario = Alumno()
+        # avance boletas
+        # imprimir boleta
+        usuarios = db.session.query(Alumno.cve_alum, Alumno.alum_nombre).all()
+    return render_template('/usuario/listaUsuario.html', usuarios=usuarios)
 
-    return render_template('/usuario/listaUsuario.html')
