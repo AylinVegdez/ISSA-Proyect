@@ -116,7 +116,27 @@ class Materia(db.Model):
 
 class Grupo(db.Model):
     cvegrupo = Column(Integer, primary_key=True)
-    cve_prof = Column(Integer, ForeignKey('PROFESOR.cveprof'))
+    cveprof = Column(Integer, ForeignKey('profesor.cveprof'))
+    grado= Column(Integer, nullable=False, default=1)
+    grupo= Column(String(1), nullable=False, default="A")
+    nombre = Column(String(45))
+
+    def registrar_grupo(self,datos):
+        msg="Grupo asignado correctamente"
+        respuesta={'status': 'OK', 'codigo':'','mensaje':msg}
+        # self.cve_materia =  datos['cvemateria']
+        self.cveprof = datos['nameProf']
+        self.grado = datos['grado']
+        self.grupo = datos['grupo']
+        self.nombre = datos['name']
+
+        try:
+            db.session.add(self)
+            db.session.commit()
+            respuesta["codigo"] = '1'
+        except exc.SQLAlchemyError as error:
+            print(error)
+        return respuesta
 
 
 class Alumno(db.Model):

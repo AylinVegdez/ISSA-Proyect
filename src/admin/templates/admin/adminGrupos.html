@@ -122,14 +122,15 @@
                             </tr>
                         </thead>
                         <tbody style="text-align: center;">
+                            {% for gp in grupos: %}
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
+                                <th scope="row">{{ gp["cvegrupo"] }}</th>
+                                <td>{{ gp["nombre"] }}</td>
+                                <td>{{ gp["grupo"] }}</td>
                                 <td><a href="#" onclick="Actualizar()"><i class="bi bi-pencil-square iconoEdit"></i></a></td>
                                 <td><a href="#" onclick="Eliminar()"><i class="bi bi-trash-fill iconoTrahs"></i></a></td>
                             </tr>
-
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

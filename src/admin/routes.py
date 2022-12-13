@@ -7,7 +7,7 @@ from . import adminalumno
 from . import adminmateria
 from . import adminprofesor
 from . import admincalificacion
-from ..models import Profesor, Alumno, Materia
+from ..models import Profesor, Alumno, Materia, Grupo
 from ..extensiones import db
 
 idActualizar=""
@@ -58,7 +58,12 @@ def inicio_profesores():
 @admingrupo.route('/grupos')
 def inicio_grupos():
 
-    return render_template('/admin/adminGrupos.html')
+
+    grupos = db.session.query(Grupo.cvegrupo, Grupo.nombre,Grupo.grupo).all()
+
+    return render_template('/admin/adminGrupos.html', grupos = grupos)
+
+
 
 
 @admincalificacion.route('/calificaciones')
@@ -189,3 +194,32 @@ def materia_agregado():
 @asignargrupo.route('/asignar_grupo')
 def asigar_grupo():
     return render_template('/admin/asignarGrupo.html')
+
+
+@asignargrupo.route('/grupo_agregado', methods=['POST'])
+def grupo_agregado():
+    if request.method == 'POST':
+
+        cve = db.session.query(Profesor.cveprof)
+        cve_prof = request.form["nameProf"]
+        cveprof = 1
+
+        if cve_prof != None:
+            name = cve_prof
+        for c in cve:
+            if c == cve_prof:
+                cveprof = c
+
+        json_grupo = {
+            "nameProf": cveprof,
+            "grado": request.form["grado"],
+            "grupo": request.form["grupo"],
+            "name": name
+        }
+        grupo = Grupo()
+        print(json_grupo)
+        grupo.registrar_grupo(json_grupo)
+        return redirect(url_for('admingrupo.inicio_grupos'))
+
+    else:
+        return 'no holis'

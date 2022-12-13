@@ -101,23 +101,27 @@
                 <hr size="8rem" color="black" style="margin: .5rem;"></hr>
                 
                 <!-- <form class="d-flex" role="NombreProfesor" style=" align-items: center; padding-right: 3rem; padding-left: 3rem; padding-top: 1rem; position: relative;" > -->
-                    <form  role="NombreProfesor">   
+                    <form  role="NombreProfesor"  method = "POST" action = "grupo_agregado" onsubmit="return submitForm(this);">   
 
                         <div class="row mb-3 text-center" style="margin-top: 40px;">
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem; "><label class="etiquetaAzul d-flex" style="color: white; " >Profesor</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Nombre del profesor" aria-label="Buscar" ></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Nombre del profesor" name="nameProf"aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" style="margin-top: 50px;">
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grado</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Grado" aria-label="Buscar" ></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " name="grado" style="margin-top: .29rem;" type="number" placeholder="Grado" aria-label="Buscar" ></div>
 
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grupo</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Grupo" aria-label="Buscar" ></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="grupo">
+                                <option>A</option>
+                                <option>B</option>
+                              </select></div>
+                        </div>
 
                         </div>
 
                         <div class="justify-content-end" >
-                            <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;" onclick="Guardar()">
+                            <button type="submit" id="sidebarCollapse" class="btnAzul" style="right: 40px;" >
                                 <i class="bi bi-arrow-bar-up"></i>
                                 <span>Asignar Grupo</span>
                             </button>
