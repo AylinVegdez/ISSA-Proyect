@@ -115,7 +115,7 @@
                     <table class="table table-light">
                         <thead style="background-color: #6FA84B;text-align: center;">
                             <tr>
-                                <th scope="col" class="tituloTable">Clave</th>
+                                <th scope="col" class="tituloTable">Grado</th>
                                 <th scope="col" class="tituloTable">Nombre Profesor</th>
                                 <th scope="col" class="tituloTable">Grupo</th>
                                 <th scope="col" class="tituloTable" colspan="2">Acciones</th>
@@ -124,7 +124,7 @@
                         <tbody style="text-align: center;">
                             {% for gp in grupos: %}
                             <tr>
-                                <th scope="row">{{ gp["cvegrupo"] }}</th>
+                                <th scope="row">{{ gp["grado"] }} °</th>
                                 <td>{{ gp["nombre"] }}</td>
                                 <td>{{ gp["grupo"] }}</td>
                                 <td><a href="#" onclick="Actualizar()"><i class="bi bi-pencil-square iconoEdit"></i></a></td>
@@ -136,7 +136,7 @@
                 </div>
             </div>
 
-             <div class="container d-flex justify-content-end" style="padding-bottom: 100px;">
+             <div class="container d-flex justify-content-end">
                 <a href="/admin/asignar_grupo">
                 <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">    
                     <i class="bi bi-person-lines-fill" style="font-size: calc(0.7em + 0.5vw);"></i>
@@ -151,10 +151,12 @@
         </div>
     </div>
 
- <footer  style="background-color: #34b5aa;">
-        <div class="container p-4" >
-            
+    <footer  style="background-color: #34b5aa;">
+
+        <div class="container" >
+            <br><br>
         </div>
+
     </footer>
 
 

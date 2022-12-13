@@ -134,15 +134,19 @@
                         </div>
                        
                             <div class="row mb-3 text-center">
-                                <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grado</label></div>
+                                <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Clave Grupo</label></div>
                                 <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                    <input class="form-control me-2 buscador  "  name="grado" style="margin-top: .29rem;" type="number" placeholder="Grado" aria-label="Buscar" ></div>
+                                    <input class="form-control me-2 buscador  "  name="grado" style="margin-top: .29rem;" type="number" min="1" placeholder="clave" aria-label="Buscar" ></div>
     
                                 <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grupo</label></div>
+                                
                                 <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                    <input class="form-control me-2 buscador  "  name="grupo" style="margin-top: .29rem;" type="number" placeholder="Grupo" aria-label="Buscar" ></div>
+                                    <select class="form-control me-2 buscador " name="grupo">
+                                        <option>A</option>
+                                        <option>B</option>
+                                      </select></div>
     
-                                <div class="justify-content-end" style="padding-bottom: 100px;">
+                                <div class="justify-content-end" >
                                     <button type="submit" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
                                         <i class="bi bi-arrow-bar-up"></i>
                                         <span>Agregar Alumno</span>
@@ -165,12 +169,13 @@
         </div>
     </div>
 
-      <footer  style="background-color: #34b5aa;">
-        <div class="container p-4" >
-            
-        </div>
-    </footer>
+    <footer  style="background-color: #34b5aa;">
 
+        <div class="container" >
+            <br><br>
+        </div>
+
+    </footer>
 
 
     <script>

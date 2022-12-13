@@ -1,4 +1,6 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, g
+
+import src
 #definir el Blueprint
 
 from . import inicio, agregarprofesor, agregaralumno, asignargrupo, asignarmateria
@@ -7,22 +9,27 @@ from . import adminalumno
 from . import adminmateria
 from . import adminprofesor
 from . import admincalificacion
+from ..Globales import Globales
 from ..models import Profesor, Alumno, Materia, Grupo
 from ..extensiones import db
 
-idActualizar=""
+
 
 #crear los endpoints
 #ruta http://127.0.0.1:5000/productos/
-@inicio.route('/paginaprincipal')
-def inicioprincipal():
+@inicio.route('/paginaprincipal/<usu>')
+def inicioprincipal(usu):
+    print(usu, "admiiiiiiiiiiin")
 
-    return render_template('/admin/adminMenuP.html')
+    return render_template('/admin/adminMenuP.html', usuario=usu)
+
+
+
 
 @adminprofesor.route('/profesores')
 def inicio_profesores():
+    print(g.usuario, "de profesores")
     profesores = db.session.query(Profesor.cveprof, Profesor.prof_nombre).all()
-
     if (request.args.get('idProfe') != None):
         profesor = Profesor()
         profesor.eliminar_profesor(request.args.get("idProfe"))
@@ -59,10 +66,9 @@ def inicio_profesores():
 def inicio_grupos():
 
 
-    grupos = db.session.query(Grupo.cvegrupo, Grupo.nombre,Grupo.grupo).all()
+    grupos = db.session.query(Grupo.grado, Grupo.nombre,Grupo.grupo).all()
 
     return render_template('/admin/adminGrupos.html', grupos = grupos)
-
 
 
 
@@ -76,9 +82,37 @@ def inicio_materias():
     materias = db.session.query(Materia.cve_materia, Materia.nombre_materia).all()
 
     if (request.args.get('cve_materia') != None):
+        print("entro al request de eliminar")
         materia = Materia()
+        materia.eliminar_materia(request.args.get("cve_materia"))
         materias = db.session.query(Materia.cve_materia, Materia.nombre_materia).all()
-    return render_template('/admin/adminMaterias.html', materias = materias)
+        return render_template('/admin/adminMaterias.html', materias=materias)
+
+    if (request.args.get('cvemateriaactualizar') != None):
+        materia = Materia()
+        mat = materia.consultar_materia(request.args.get("cvemateriaactualizar"))
+        # profesores = db.session.query(Profesor.cveprof, Profesor.prof_nombre).all()
+        print(mat)
+
+        idActualizar = request.args.get('cvemateriaactualizar')
+
+        json_materia = {
+            "nombre_materia": mat["nombre_materia"],
+            "clave_materia": idActualizar
+
+        }
+
+        json_botones = {
+            "texto": "ACTUALIZAR PROFESOR",
+            "boton": 'Actualizar Profesor'
+        }
+
+        # return json_prof
+        return render_template('/admin/asignarMaterias.html', materias=json_materia, botones=json_botones, bandera=True,
+                               id=idActualizar)
+        # return redirect(url_for('agregarprofesor.agregar_profesor'))
+
+    return render_template('/admin/adminMaterias.html', materias=materias)
 
 @adminalumno.route('/alumnos')
 def inicio_alumnos():
@@ -163,7 +197,7 @@ def alumno_agregado():
             "p":request.form["apellidoP"],
             "m":request.form["apellidoM"],
             "sexo": sexo,
-            "cvegp": request.form["grupo"]
+            "cvegp": request.form["grado"]
         }
         alumno = Alumno()
         print(json_alumno)
@@ -200,24 +234,25 @@ def asigar_grupo():
 def grupo_agregado():
     if request.method == 'POST':
 
-        cve = db.session.query(Profesor.cveprof)
-        cve_prof = request.form["nameProf"]
+        # cve = db.session.query(Profesor.cveprof).all()
+        # nom = db.session.query(Profesor.prof_nombre).all()
+
+        nom_prof = request.form["nameProf"]
         cveprof = 1
 
-        if cve_prof != None:
-            name = cve_prof
-        for c in cve:
-            if c == cve_prof:
-                cveprof = c
+        if nom_prof != None:
+            name = nom_prof
+
+        cveprof = db.session.query(Profesor.cveprof).filter(Profesor.prof_nombre == nom_prof).first()
 
         json_grupo = {
-            "nameProf": cveprof,
+            "nameProf": cveprof[0],
             "grado": request.form["grado"],
             "grupo": request.form["grupo"],
             "name": name
         }
         grupo = Grupo()
-        print(json_grupo)
+        print(cveprof)
         grupo.registrar_grupo(json_grupo)
         return redirect(url_for('admingrupo.inicio_grupos'))
 

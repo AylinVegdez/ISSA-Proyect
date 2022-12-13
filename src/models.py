@@ -95,25 +95,51 @@ class Profesor(db.Model):
         return profesores
 
 
-
 class Materia(db.Model):
-    _name_='MATERIA'
-    cve_materia=Column(Integer,primary_key=True)
-    nombre_materia=Column(String(30),nullable=False)
-    def registrar_materia(self,datos):
-        msg="Materia insertada correctamente"
-        respuesta={'status': 'OK', 'codigo':'','mensaje':msg}
+    name = 'MATERIA'
+    cve_materia = Column(Integer, primary_key=True)
+    nombre_materia = Column(String(30), nullable=False)
+
+    def registrar_materia(self, datos):
+        msg = "Materia insertada correctamente"
+        respuesta = {'status': 'OK', 'codigo': '', 'mensaje': msg}
         # self.cve_materia =  datos['cvemateria']
-        self.nombre_materia = datos['nombremateria']
+        print(datos.get("clavemateria"))
+        if (datos.get("clavemateria") == None):
+            self.nombre_materia = datos['nombremateria']
+            db.session.add(self)
+            db.session.commit()
+        else:
+            mat = Materia.query.filter(Materia.cve_materia == datos["clavemateria"]).first()
+            print("Este es el mat")
+            print(mat)
+            mat.nombre_materia = datos["nombremateria"],
+            mat.cve_materia = datos["clavemateria"]
+            db.session.add(mat)
+            db.session.commit()
 
         try:
+            print("Este es el self:")
+            print(self)
+            mat = Materia.query.filter(Materia.cve_materia == id).first()
             db.session.add(self)
             db.session.commit()
             respuesta["codigo"] = '1'
         except exc.SQLAlchemyError as error:
             print(error)
+
         return respuesta
 
+    def consultar_materia(self, id):
+        # prof = Profesor.query.filter(Profesor.cveprof == id).first()
+        materias = db.session.query(Materia.cve_materia, Materia.nombre_materia).filter(
+            Materia.cve_materia == id).first()
+        return materias
+
+    def eliminar_materia(self, id):
+        mat = Materia.query.filter(Materia.cve_materia == id).first()
+        db.session.delete(mat)
+        db.session.commit()
 class Grupo(db.Model):
     cvegrupo = Column(Integer, primary_key=True)
     cveprof = Column(Integer, ForeignKey('profesor.cveprof'))

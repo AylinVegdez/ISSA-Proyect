@@ -63,7 +63,7 @@
             </button>
             <a href="#" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;" onclick="CerrarSesiones()">           <!-- flotante de usuario  -->
                 <i class="bi bi-person-circle icono"></i>
-                <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+                <span style="padding: 1px 1px 1px 1px;">{{usuario}}</span>
             </a>
         <!--Table-->
             <div class="container" style="padding-left: 30px; padding-right: 30px;">
@@ -114,7 +114,7 @@
                 </div>
             </div>
         <!-- Search form -->
-            <div class="container d-flex justify-content-center" style="padding-bottom: 100px;"> 
+            <div class="container d-flex justify-content-center"> 
                 <button type="button" id="sidebarCollapse" class="btnAzul" onclick="Guardar()" >     <!-- Boton azul, que colapsa el menu lateral  -->
                     <i class="bi bi-check-circle"></i>
                     <span>Confirmar</span>
@@ -123,7 +123,12 @@
         </div>
     </div>
 
-    
+    <footer  style="background-color: #34b5aa;">
+        <div class="container" >
+            <br><br>
+        </div>
+    </footer>
+
 
     <script>
         $(document).ready(function () {
@@ -137,14 +142,6 @@
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
     <script src="/static/js/cerrarSesiones.js"></script>
 </body>
-    
-        <footer  style="background-color: #34b5aa;">
-
-        <div class="container p-4" >
-            
-        </div>
-
-    </footer>
 </html>
 
 
