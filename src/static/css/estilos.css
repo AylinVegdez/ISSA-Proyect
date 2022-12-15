@@ -8,6 +8,29 @@
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
+ .etiquetaAzul{
+        font-family: 'Lato';
+        font-style: normal;
+        font-size: .9rem;
+        font-weight: 800;
+        align-content: space-between;
+        text-align: justify;
+        color: #ffffff; /* Color del texto */
+        background: #34B5AA;
+        border-end-end-radius: 20px;
+        border-start-end-radius: 20px;
+        border-color: #ffffff00;
+        padding: 13px 28px; /* Relleno del boton */
+        letter-spacing:0.02em
+        }
+    
+.btnAzul:hover {
+	background-color: #31dbcd; /* Color de fondo al pasar el cursor */
+	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+	transform: translateY(-7px);
+  
+
+}
 .label_etq {
     display: flex;
     text-align: center;
