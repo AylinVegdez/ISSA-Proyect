@@ -8,6 +8,23 @@
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
+.label_etq {
+    display: flex;
+    text-align: center;
+    font-family: 'loto';
+ 
+    background-color: white;
+    
+    border-radius: 12px;
+
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.247);
+    position: relative;
+    margin: 62px 10.05% 62px 11.31%;
+
+
+    padding: 125px;
+    
+}
   .input-box i,
   .input-box .button {
     position: absolute;
