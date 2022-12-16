@@ -222,6 +222,35 @@ class Calif_Alumno(db.Model):
     cve_materia = Column(Integer, ForeignKey('MATERIA.cve_materia'))
 
 
+class calif_alumno(db.Model):
+    _name_ = 'calif_alumno'
+    cve_calif_alum = Column(Integer, primary_key=True)
+    CALIF_TRIM_ALUM = Column(DECIMAL(4, 2), nullable=False)
+    NUMERO_TRIMESTRE = Column(Integer, nullable=False)
+    CVE_ALUM = Column(Integer, ForeignKey('alumno.cve_alum'))  # ForeignKey('Alumno.cve_alum'))
+    CVE_MATERIA = Column(Integer, ForeignKey('materia.cve_materia'))  # ForeignKey('Materia.cve_materia'))
+
+    def registrar_calif(self, datos):
+        msg = "Calificacion insertada correctamente"
+        respuesta = {'status': 'OK', 'codigo': '', 'mensaje': msg}
+
+        self.CALIF_TRIM_ALUM = datos['calificacion']
+        self.CVE_ALUM = datos['cvealumno']
+        self.CVE_MATERIA = datos['cve_materia']
+        self.NUMERO_TRIMESTRE = datos['trimestre']
+        try:
+            db.session.add(self)
+            db.session.commit()
+            respuesta["codigo"] = '1'
+
+
+        except exc.SQLAlchemyError as error:
+            print(error)
+            msg = error
+
+        return respuesta
+
+
 class Prom_Materia_Alumno(db.Model):
     cve_prom_materia = Column(Integer, primary_key=True)
     prom_mat_alum = Column(DECIMAL(4, 2), nullable=False)
@@ -229,7 +258,50 @@ class Prom_Materia_Alumno(db.Model):
     cve_alum = Column(Integer, ForeignKey('ALUMNO.cve_alum'))
 
 
+class prom_materia_alumno(db.Model):
+    _name_ = 'prom_materia_alumno'
+    CVE_PROM_MATERIA = Column(Integer, primary_key=True)
+    PROM_MAT_ALUM = Column(DECIMAL(4, 2), nullable=False)
+    CVE_MATERIA = Column(Integer, ForeignKey('materia.cve_materia'))
+    CVE_ALUM = Column(Integer, ForeignKey('alumno.cve_alum'))
+
+    def actualizar_promedio(self, datos):
+        msg = "Calificacion insertada correctamente"
+        respuesta = {'status': 'OK', 'codigo': '', 'mensaje': msg}
+        cal1 = db.session.query(calif_alumno.CALIF_TRIM_ALUM).filter(calif_alumno.CVE_ALUM == datos["cvealumno"],
+                                                                     calif_alumno.NUMERO_TRIMESTRE == 1,
+                                                                     calif_alumno.CVE_MATERIA == datos[
+                                                                         'cve_materia']).first()
+        cal2 = db.session.query(calif_alumno.CALIF_TRIM_ALUM).filter(calif_alumno.CVE_ALUM == datos["cvealumno"],
+                                                                     calif_alumno.NUMERO_TRIMESTRE == 2,
+                                                                     calif_alumno.CVE_MATERIA == datos[
+                                                                         'cve_materia']).first()
+        cal3 = db.session.query(calif_alumno.CALIF_TRIM_ALUM).filter(calif_alumno.CVE_ALUM == datos["cvealumno"],
+                                                                     calif_alumno.NUMERO_TRIMESTRE == 3,
+                                                                     calif_alumno.CVE_MATERIA == datos[
+                                                                         'cve_materia']).first()
+        print(datos)
+        print(cal1)
+        print(cal2)
+        print(cal3)
+
+        if cal3 != None and cal2 != None and cal1 != None:
+            self.PROM_MAT_ALUM = (cal1[0] + cal2[0] + cal3[0]) / 3
+            self.CVE_ALUM = datos['cvealumno']
+            self.CVE_MATERIA = datos['cve_materia']
+
+            try:
+                db.session.add(self)
+                db.session.commit()
+                respuesta["codigo"] = '1'
 
 
+            except exc.SQLAlchemyError as error:
+                print(error)
+                msg = error
+        else:
+            msg = "Ha ocurrido un error alguna calificacion esta vacia"
+            respuesta = {'status': 'ERROR', 'codigo': '2', 'mensaje': msg}
+        return respuesta
 
 

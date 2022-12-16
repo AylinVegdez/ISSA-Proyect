@@ -8,36 +8,13 @@
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
- .etiquetaAzul{
-        font-family: 'Lato';
-        font-style: normal;
-        font-size: .9rem;
-        font-weight: 800;
-        align-content: space-between;
-        text-align: justify;
-        color: #ffffff; /* Color del texto */
-        background: #34B5AA;
-        border-end-end-radius: 20px;
-        border-start-end-radius: 20px;
-        border-color: #ffffff00;
-        padding: 13px 28px; /* Relleno del boton */
-        letter-spacing:0.02em
-        }
-    
-.btnAzul:hover {
-	background-color: #31dbcd; /* Color de fondo al pasar el cursor */
-	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
-	transform: translateY(-7px);
-  
-
-}
 .label_etq {
     display: flex;
     text-align: center;
     font-family: 'loto';
- 
+
     background-color: white;
-    
+
     border-radius: 12px;
 
     box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.247);
@@ -46,7 +23,7 @@
 
 
     padding: 125px;
-    
+
 }
   .input-box i,
   .input-box .button {
@@ -84,7 +61,7 @@
   .input-box .button:active {
     transform: translateY(-50%) scale(0.98);
   }
-  
+
   /* Responsive */
   @media screen and (max-width: 500px) {
     .input-box {
@@ -167,7 +144,7 @@
     right: 0px;
     color:#ffffff ;
     background-color:#22a6b3;
-    pointer-events: painted;  
+    pointer-events: painted;
   }
   .btn-search:focus ~ .input-search{
     width: 300px;
@@ -197,7 +174,7 @@
     flex-grow: 1;
     margin: 23px 2.95% 84px 1.01%;
   }
-  
+
 
   .titulos_menu{
     font: 700 12px/1.2 "Inter", Helvetica, Arial, serif;
@@ -285,7 +262,7 @@ a:focus {
   }
 .tituloBarra{
     background-color:#ECBE14;
-    color: white; 
+    color: white;
     padding: 5px;
     text-align: center;
     font-family: 'Lato';
@@ -417,7 +394,7 @@ ul.CTAs a {
     margin-top: 50px;
     letter-spacing:0.05em
     }
-    
+
 .btnAzul:hover {
 	background-color: #31dbcd; /* Color de fondo al pasar el cursor */
 	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
@@ -429,7 +406,7 @@ ul.CTAs a {
 }
 /*boton flotante*/
 .btn-flotante {
-    
+
 	font-size: 10px; /* Cambiar el tamaño de la tipografia */
 	text-transform: uppercase; /* Texto en mayusculas */
 	font-weight: bold; /* Fuente en negrita o bold */
@@ -543,11 +520,11 @@ ul.CTAs a {
 }
 
 @media only screen and (max-width: 600px) {
-    
+
     #sidebarCollapse span {
         display: none;
     }
-    
+
 }
 
 
@@ -569,7 +546,7 @@ ul.CTAs a {
     color: white;
     background: none;
     border: none;
-    
+
 }
 .search-txt{
     width: 0;
@@ -593,19 +570,29 @@ ul.CTAs a {
   width: 350px;
   padding: 0 20px;
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+
+.etiquetaAzul{
+        font-family: 'Lato';
+        font-style: normal;
+        font-size: .9rem;
+        font-weight: 800;
+        align-content: space-between;
+        text-align: justify;
+        color: #ffffff;
+        background: #34B5AA;
+        border-end-end-radius: 20px;
+        border-start-end-radius: 20px;
+        border-color: #ffffff00;
+        padding: 13px 28px;
+        letter-spacing:0.02em
+        }
+
+.btnAzul:hover {
+	background-color: #31dbcd;
+	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+	transform: translateY(-7px);
+
+
+}
 

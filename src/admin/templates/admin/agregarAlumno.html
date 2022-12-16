@@ -94,7 +94,7 @@
             </button>
             <a href="#" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;" onclick="CerrarSesiones()">           <!-- flotante de usuario  -->
                 <i class="bi bi-person-circle icono"></i>
-                <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+                <span style="padding: 1px 1px 1px 1px;">{{usuario}}</span>
             </a>
             <div class="container" style="margin-top: 20px;padding-left: 30px; padding-right: 30px; padding-top: 30px;padding-bottom: 30px; background-color: #FFF8F8;">
                 <h2 class="tituloForm" >AGREGAR ALUMNO</h2>
@@ -105,27 +105,27 @@
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input required class="form-control me-2 buscador  "  name = "nameAlumno"style="margin-top: .29rem;" type="text" placeholder="Nombre del Alumno" aria-label="Buscar" ></div>
+                                <input class="form-control me-2 buscador  "  name = "nameAlumno"style="margin-top: .29rem;" type="text" placeholder="Nombre del Alumno" aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Paterno</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input required class="form-control me-2 buscador  " name="apellidoP"style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" ></div>
+                                <input class="form-control me-2 buscador  " name="apellidoP"style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Materno</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input required class="form-control me-2 buscador  "  name="apellidoM"style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" ></div>
+                                <input class="form-control me-2 buscador  "  name="apellidoM"style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >CURP</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input required class="form-control me-2 buscador  "  name="curp"style="margin-top: .29rem;" type="text" placeholder="CURP" aria-label="Buscar" ></div>
+                                <input class="form-control me-2 buscador  "  name="curp"style="margin-top: .29rem;" type="text" placeholder="CURP" aria-label="Buscar" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Edad</label></div>
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                <input required  class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="Edad" aria-label="Buscar"  name="edad" ></div>
+                                <input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" min ="5" max="12"placeholder="Edad" aria-label="Buscar"  name="edad" ></div>
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Sexo</label></div>
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="Sexo">
                                 <option>Hombre</option>
@@ -136,23 +136,55 @@
                             <div class="row mb-3 text-center">
                                 <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Clave Grupo</label></div>
                                 <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                    <input required class="form-control me-2 buscador  "  name="grado" style="margin-top: .29rem;" type="number" min="1" placeholder="clave" aria-label="Buscar" ></div>
-    
-                                <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grupo</label></div>
-                                
-                                <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                    <select class="form-control me-2 buscador " name="grupo">
-                                        <option>A</option>
-                                        <option>B</option>
-                                      </select></div>
-    
 
-                            </div>
-                            <div class="justify-content-end" style="padding-top:30px; padding-bottom: 10px;">
-                                <button type="submit" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
-                                    <i class="bi bi-arrow-bar-up"></i>
-                                    <span>Agregar Alumno</span>
-                                </button>
+                                    <!--<input class="form-control me-2 buscador  "  name="grado" style="margin-top: .29rem;" type="number" min="1" placeholder="clave" aria-label="Buscar" >-->
+
+                                    <select class="form-control me-2 buscador " name="grado" id="cve" onchange="ShowSelected();">
+                                        {% for gp in grupos%}
+                                        <option name=config value="{{gp[0]}}" SELECTED>{{gp[0]}}</option>
+                                        {% endfor %}
+                                      </select>
+                                      
+                                </div>
+    
+                                <!--<div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grupo</label></div>-->
+
+                               <!--<div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grado</label></div>-->
+                            <!-- <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " name="grado" style="margin-top: .29rem;" type="number" min="1" max="6" placeholder="Grado" aria-label="Buscar" ></div>-->
+
+                                 <script src="funcion.js"></script>
+                                 
+                                    
+                                    <script type="text/javascript">
+                                        function ShowSelected(){
+                                            var cveg = document.getElementById("cve").value;
+                                            var txt1 = document.getElementById("lbl1").value;
+                                            var txt2 = document.getElementById("lbl2").value;
+                                            var combo = document.getElementById("cve");
+                                            var selected = combo.options[combo.selectedIndex].text;
+                                            alert(selected);
+
+                                            {% for g in gg%}
+                                                if ( selected == "{{ g["cvegrupo"]}}" ){
+                                                    var txt ="{{ g["grupo"]}}"
+                                                    var tx ="{{ g["grado"]}}"}
+
+                                                    document.querySelector('#lbl1').innerText = "Grado: "+tx+" °"
+                                                    document.querySelector('#lbl2').innerText = "Grupo: "+txt
+                                            {% endfor %} 
+                                        }
+                                    </script>
+
+                                
+                                 
+                               
+    
+                                <div class="justify-content-end" >
+                                    <button type="submit" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
+                                        <i class="bi bi-arrow-bar-up"></i>
+                                        <span>Agregar Alumno</span>
+                                    </button>
+                                </div>
                             </div>
 
                        
@@ -171,9 +203,11 @@
     </div>
 
     <footer  style="background-color: #34b5aa;">
-        <div class="container p-4" >
-            
+
+        <div class="container" >
+            <br><br>
         </div>
+
     </footer>
 
 

@@ -17,18 +17,16 @@ from ..extensiones import db
 
 #crear los endpoints
 #ruta http://127.0.0.1:5000/productos/
-@inicio.route('/paginaprincipal/<usu>')
-def inicioprincipal(usu):
-    print(usu, "admiiiiiiiiiiin")
+@inicio.route('/paginaprincipal')
+def inicioprincipal():
 
-    return render_template('/admin/adminMenuP.html', usuario=usu)
+    return render_template('/admin/adminMenuP.html')
 
 
 
 
 @adminprofesor.route('/profesores')
 def inicio_profesores():
-    print(g.usuario, "de profesores")
     profesores = db.session.query(Profesor.cveprof, Profesor.prof_nombre).all()
     if (request.args.get('idProfe') != None):
         profesor = Profesor()
@@ -66,7 +64,7 @@ def inicio_profesores():
 def inicio_grupos():
 
 
-    grupos = db.session.query(Grupo.grado, Grupo.nombre,Grupo.grupo).all()
+    grupos = db.session.query(Grupo.cvegrupo, Grupo.grado, Grupo.nombre,Grupo.grupo).all()
 
     return render_template('/admin/adminGrupos.html', grupos = grupos)
 
@@ -173,16 +171,17 @@ def profesor_actualizado():
         }
         profesor = Profesor()
         print(json_profesor)
-        print(idActualizar)
+
         profesor.actualizar_profesor(json_profesor, request.form["id"])
         return redirect(url_for('agregarprofesor.agregar_profesor'))
     else:
         return 'no holis'
 
-@agregaralumno.route('/agregar_alumno')
+@agregaralumno.route('/agregar_alumno', methods=['GET', 'POST'])
 def agregar_alumno():
-    return render_template('/admin/agregarAlumno.html')
-
+    cvegrupo = list(db.session.query(Grupo.cvegrupo).all())
+    gg = db.session.query(Grupo.grado, Grupo.grupo, Grupo.cvegrupo)
+    return render_template('/admin/agregarAlumno.html', grupos=cvegrupo, gg=gg)
 @agregaralumno.route('/alumno_agregado', methods=['POST'])
 def alumno_agregado():
     if request.method == 'POST':
@@ -225,9 +224,12 @@ def materia_agregado():
     else:
         return 'no holis'
 
-@asignargrupo.route('/asignar_grupo')
+@asignargrupo.route('/asignar_grupo', methods=['GET', 'POST'])
 def asigar_grupo():
-    return render_template('/admin/asignarGrupo.html')
+    #profesores = os.listdir(Profesor.prof_nombre)
+    profesores = list(db.session.query(Profesor.prof_nombre).all())
+    print(type(profesores))
+    return render_template('/admin/asignarGrupo.html', profesores=profesores)
 
 
 @asignargrupo.route('/grupo_agregado', methods=['POST'])
@@ -238,6 +240,7 @@ def grupo_agregado():
         # nom = db.session.query(Profesor.prof_nombre).all()
 
         nom_prof = request.form["nameProf"]
+        print(nom_prof + "--->")
         cveprof = 1
 
         if nom_prof != None:

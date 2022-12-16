@@ -95,7 +95,7 @@
 
             <a href="#" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;" onclick="CerrarSesiones()">           <!-- flotante de usuario  -->
                 <i class="bi bi-person-circle icono"></i>
-                <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+                <span style="padding: 1px 1px 1px 1px;">{{usuario}}</span>
             </a>
                     
         <!--Table-->
@@ -103,7 +103,7 @@
                 <div class="d-flex justify-content-star">
                     <label class="search_label">CONTROL MATERIAS
                     </label>
-                    <div class="input-box">    
+                    <div class="input-box">
                         <input type="text" placeholder="Materia" style="font-size: 10px;">
                         <span class="icon">
                             <i class="fa fa-search search-icon"></i>
@@ -127,7 +127,7 @@
                             <tr>
                                 <th scope="row">{{materia["cve_materia"]}}</th>
                                 <td>{{materia["nombre_materia"]}}</td>
-                                
+
                                 <td><a href="?cvemateriaactualizar={{materia.cve_materia}}" ><i class="bi bi-pencil-square iconoEdit"></i></a></td>
                                 <td><a href="?cve_materia={{materia.cve_materia}}" type="submit" ><i class="bi bi-trash-fill iconoTrahs"></i></a></td>
                             </tr>
@@ -139,21 +139,21 @@
 
              <div class="container d-flex justify-content-end" style="padding-bottom: 100px;">
                 <a href="/admin/asignar_materia">
-                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">    
+                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
                     <i class="bi bi-journal-plus" style="font-size: calc(0.7em + 0.5vw);"></i>
                     <span>Agregar Materia</span>
                 </button>
             </a>
             </div>
-        
-       
- 
+
+
+
         </div>
     </div>
 
     <footer  style="background-color: #34b5aa;">
         <div class="container p-4" >
-            
+
         </div>
     </footer>
 
@@ -181,5 +181,3 @@
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
-
-

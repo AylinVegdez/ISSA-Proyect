@@ -95,15 +95,15 @@
 
             <a href="#" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;" onclick="CerrarSesiones()">           <!-- flotante de usuario  -->
                 <i class="bi bi-person-circle icono"></i>
-                <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+                <span style="padding: 1px 1px 1px 1px;">{{usuario}}</span>
             </a>
                     
         <!--Table-->
             <div class="container" style="padding-left: 30px; padding-right: 30px;">
                 <div class="d-flex justify-content-star">
-                    <label class="search_label">CONTROL ALUMNO 
+                    <label class="search_label">CONTROL ALUMNO
                     </label>
-                    <div class="input-box">    
+                    <div class="input-box">
                         <input type="text" placeholder="Nombre" style="font-size: 10px;">
                         <span class="icon">
                             <i class="fa fa-search search-icon"></i>
@@ -142,22 +142,22 @@
             </div>
 
              <div class="container d-flex justify-content-end" style="padding-bottom: 100px;">
-                <a href="/admin/agregar_alumno"> 
-                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">    
+                <a href="/admin/agregar_alumno">
+                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
                     <i class="bi bi-person-plus-fill" style="font-size: calc(0.7em + 0.5vw);"></i>
                     <span>Agregar Alumno</span>
                 </button>
             </a>
             </div>
-        
-       
- 
+
+
+
         </div>
     </div>
 
     <footer  style="background-color: #34b5aa;">
         <div class="container p-4" >
-            
+
         </div>
     </footer>
 
@@ -181,8 +181,6 @@
      <script src="/static/js/eliminar.js"></script>
      <script src="/static/js/cerrarSesiones.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
-       
+
 </body>
 </html>
-
-

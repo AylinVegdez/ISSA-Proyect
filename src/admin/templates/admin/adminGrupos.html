@@ -95,7 +95,7 @@
 
             <a href="#" class="btn-flotante "  id="sidebarCollapse" style="text-decoration:none;" onclick="CerrarSesiones()">           <!-- flotante de usuario  -->
                 <i class="bi bi-person-circle icono"></i>
-                <span style="padding: 1px 1px 1px 1px;">nombre_usuario</span>
+                <span style="padding: 1px 1px 1px 1px;">{{usuario}}</span>
             </a>
                     
         <!--Table-->
@@ -103,7 +103,7 @@
                 <div class="d-flex justify-content-star">
                     <label class="search_label">CONTROL GRUPOS
                     </label>
-                    <div class="input-box">    
+                    <div class="input-box">
                         <input type="text" placeholder="Grupo" style="font-size: 10px;">
                         <span class="icon">
                             <i class="fa fa-search search-icon"></i>
@@ -117,22 +117,25 @@
                     <table class="table table-light">
                         <thead style="background-color: #6FA84B;text-align: center;">
                             <tr>
-                                <th scope="col" class="tituloTable">Grado</th>
+                                <th scope="col" class="tituloTable">Clave Grupo</th>
                                 <th scope="col" class="tituloTable">Nombre Profesor</th>
+                                <th scope="col" class="tituloTable">Grado</th>
                                 <th scope="col" class="tituloTable">Grupo</th>
                                 <th scope="col" class="tituloTable" colspan="2">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody style="text-align: center;">
+                          <tbody style="text-align: center;">
                             {% for gp in grupos: %}
                             <tr>
-                                <th scope="row">{{ gp["grado"] }} °</th>
+                                <th scope="row">{{ gp["cvegrupo"] }}</th>
                                 <td>{{ gp["nombre"] }}</td>
+                                <th scope="row">{{ gp["grado"] }} °</th>
                                 <td>{{ gp["grupo"] }}</td>
                                 <td><a href="#" onclick="Actualizar()"><i class="bi bi-pencil-square iconoEdit"></i></a></td>
                                 <td><a href="#" onclick="Eliminar()"><i class="bi bi-trash-fill iconoTrahs"></i></a></td>
                             </tr>
                             {% endfor %}
+                        </tbody>
                         </tbody>
                     </table>
                 </div>
@@ -140,22 +143,22 @@
 
              <div class="container d-flex justify-content-end" style="padding-bottom: 100px;">
                 <a href="/admin/asignar_grupo">
-                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">    
+                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">
                     <i class="bi bi-person-lines-fill" style="font-size: calc(0.7em + 0.5vw);"></i>
-    
+
                     <span>Asignar</span>
                 </button>
             </a>
             </div>
-        
-       
- 
+
+
+
         </div>
     </div>
 
     <footer  style="background-color: #34b5aa;">
         <div class="container p-4" >
-            
+
         </div>
     </footer>
 
@@ -180,8 +183,6 @@
      <script src="/static/js/eliminar.js"></script>
      <script src="/static/js/cerrarSesiones.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.10/dist/sweetalert2.all.min.js"></script>
-       
+
 </body>
 </html>
-
-
