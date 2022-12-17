@@ -1,82 +1,89 @@
 from .extensiones import db
-from sqlalchemy import Column, ForeignKey,Integer,String,Boolean,DECIMAL,exc
+from sqlalchemy import Column, ForeignKey, Integer, String, Boolean, DECIMAL, exc
 import bcrypt
-class Profesor(db.Model):
-    __name__='PROFESOR'
-    cveprof=Column(Integer,primary_key=True)
-    prof_nombre=Column(String(30),nullable=False)
-    sexo=Column(String(1),nullable=False)
-    nombre_usuario=Column(String(30),nullable=False )
-    password=Column(String(10),nullable=False)
 
-    def registrar_profesor(self,datos):
-        msg="Profesor insertado correctamente"
-        respuesta={'status': 'OK', 'codigo':'','mensaje':msg}
-        self.prof_nombre =  datos['nombre']
+
+class Profesor(db.Model):
+    _name_ = 'PROFESOR'
+    cveprof = Column(Integer, primary_key=True)
+    prof_nombre = Column(String(30), nullable=False)
+    sexo = Column(String(1), nullable=False)
+    nombre_usuario = Column(String(30), nullable=False)
+    password = Column(String(10), nullable=False)
+    habilitado = Column(String(1), default="1")
+
+    def registrar_profesor(self, datos):
+        msg = "Profesor insertado correctamente"
+        respuesta = {'status': 'OK', 'codigo': '', 'mensaje': msg}
+        self.prof_nombre = datos['nombre']
         self.sexo = datos['sexo']
-        self.nombre_usuario=datos['nombre_usuario']
+        self.nombre_usuario = datos['nombre_usuario']
         self.password = self.cifrar_contrasena(datos['clave'])
-        
+        self.habilitado = datos['habilitado']
 
         try:
             db.session.add(self)
             db.session.commit()
             respuesta["codigo"] = '1'
 
-            
+
         except exc.SQLAlchemyError as error:
             print(error)
-            # valor = (error.__cause__.args[1].split("'"[1]))
-            # campo = (error.__cause__.args[1].split("'"[0]))
-
-            # msj_error='Ocurrió un error para el campo: ' + campo + " en la entrada de datos: " + valor
-        
-            # respuesta["codigo"] = error.__cause__.args[0]
-            # respuesta["mensaje"] = msj_error
         return respuesta
-    def actualizar_profesor(self,datos, id):
+
+    def actualizar_profesor(self, datos, id):
 
         prof = Profesor.query.filter(Profesor.cveprof == id).first()
         prof.prof_nombre = datos["nombre"]
         prof.sexo = datos['sexo']
-        prof.nombre_usuario=datos['nombre_usuario']
+        prof.nombre_usuario = datos['nombre_usuario']
         prof.password = self.cifrar_contrasena(datos['clave'])
+        db.session.add(prof)
+        db.session.commit()
+
+    def habilitar_profesor(self, datos, id):
+
+        prof = Profesor.query.filter(Profesor.cveprof == id).first()
+        prof.habilitado = datos["habilitado"]
+
+        # self.habilitado = datos['habilitado']
+
         db.session.add(prof)
         db.session.commit()
 
     def cifrar_contrasena(self, contrasena):
         salt = bcrypt.gensalt()
-        contrasena_cifrada = bcrypt.hashpw(contrasena.encode('utf-8'),salt)
+        contrasena_cifrada = bcrypt.hashpw(contrasena.encode('utf-8'), salt)
         return contrasena_cifrada
 
     def verificar_contrasena(self, clave, clave_cifrada):
         return bcrypt.checkpw(clave.encode('utf-8'), clave_cifrada.encode('utf-8'))
-    
-    def validar_cliente(self, nom_usuario,clave):
 
-        #1. Respuestaa
-        msg="Cliente Aurorizado"
-        respuesta={'status': False, 'codigo':'','mensaje':msg}
+    def validar_cliente(self, nom_usuario, clave):
 
-        #2.Crear Consulta
+        # 1. Respuestaa
+        msg = "Cliente Aurorizado"
+        respuesta = {'status': False, 'codigo': '', 'mensaje': msg}
+
+        # 2.Crear Consulta
         prof = Profesor.query.filter(Profesor.nombre_usuario == nom_usuario).first()
 
         if prof:
             print(prof.password)
-            #Vericificar la contraseña
+            # Vericificar la contraseña
             if self.verificar_contrasena(clave, prof.password):
                 msg = "Cliente Autenticado"
                 respuesta["mensaje"] = msg
                 respuesta["status"] = True
             else:
                 msg = "Cliente No autenticado"
-                
+
         else:
             msg = "Cliente No autenticado"
-        respuesta["mensaje"]= msg
+        respuesta["mensaje"] = msg
 
         return respuesta
-    
+
     def consultar_general_profesor(self):
         prof = Profesor.query.filter()
         profesores = {}
@@ -90,15 +97,16 @@ class Profesor(db.Model):
         db.session.commit()
 
     def consultar_profesor(self, id):
-        #prof = Profesor.query.filter(Profesor.cveprof == id).first()
-        profesores = db.session.query(Profesor.prof_nombre, Profesor.sexo, Profesor.nombre_usuario).filter(Profesor.cveprof == id).first()
+        # prof = Profesor.query.filter(Profesor.cveprof == id).first()
+        profesores = db.session.query(Profesor.prof_nombre, Profesor.sexo, Profesor.nombre_usuario).filter(
+            Profesor.cveprof == id).first()
         return profesores
-
 
 class Materia(db.Model):
     name = 'MATERIA'
     cve_materia = Column(Integer, primary_key=True)
     nombre_materia = Column(String(30), nullable=False)
+    grado = Column(Integer, nullable=False, default=1)  # este es el nuevo que agregué
 
     def registrar_materia(self, datos):
         msg = "Materia insertada correctamente"
@@ -140,16 +148,18 @@ class Materia(db.Model):
         mat = Materia.query.filter(Materia.cve_materia == id).first()
         db.session.delete(mat)
         db.session.commit()
+
+
 class Grupo(db.Model):
     cvegrupo = Column(Integer, primary_key=True)
     cveprof = Column(Integer, ForeignKey('profesor.cveprof'))
-    grado= Column(Integer, nullable=False, default=1)
-    grupo= Column(String(1), nullable=False, default="A")
+    grado = Column(Integer, nullable=False, default=1)
+    grupo = Column(String(1), nullable=False, default="A")
     nombre = Column(String(45))
 
-    def registrar_grupo(self,datos):
-        msg="Grupo asignado correctamente"
-        respuesta={'status': 'OK', 'codigo':'','mensaje':msg}
+    def registrar_grupo(self, datos):
+        msg = "Grupo asignado correctamente"
+        respuesta = {'status': 'OK', 'codigo': '', 'mensaje': msg}
         # self.cve_materia =  datos['cvemateria']
         self.cveprof = datos['nameProf']
         self.grado = datos['grado']
@@ -166,7 +176,7 @@ class Grupo(db.Model):
 
 
 class Alumno(db.Model):
-    __name__ = 'ALUMNO'
+    _name_ = 'ALUMNO'
     cve_alum = Column(Integer, primary_key=True)
     alum_curp = Column(String(18), nullable=False)
     alum_estado = Column(Integer, nullable=False, default=0)
@@ -175,7 +185,8 @@ class Alumno(db.Model):
     alum_apellidop = Column(String(30), nullable=False)
     alum_apellidom = Column(String(30), nullable=False)
     alum_sexo = Column(String(1), nullable=False)
-    cvegrupo = Column(Integer, ForeignKey('grupo.cvegrupo'))  # Integer,ForeignKey('GRUPO.cve_grupo')
+    # Integer,ForeignKey('GRUPO.cve_grupo')
+    cvegrupo = Column(Integer, ForeignKey('grupo.cvegrupo'))
 
     def registrar_alumno(self, datos):
         msg = "Alumno insertado correctamente"
@@ -193,17 +204,48 @@ class Alumno(db.Model):
             db.session.commit()
             respuesta["codigo"] = '1'
 
-
         except exc.SQLAlchemyError as error:
             print(error)
-            # valor = (error.__cause__.args[1].split("'"[1]))
-            # campo = (error.__cause__.args[1].split("'"[0]))
+            # valor = (error._cause_.args[1].split("'"[1]))
+            # campo = (error._cause_.args[1].split("'"[0]))
 
             # msj_error='Ocurrió un error para el campo: ' + campo + " en la entrada de datos: " + valor
 
-            # respuesta["codigo"] = error.__cause__.args[0]
+            # respuesta["codigo"] = error._cause_.args[0]
             # respuesta["mensaje"] = msj_error
         return respuesta
+
+    def consultar_alumno(self, id):
+        # prof = Profesor.query.filter(Profesor.cveprof == id).first()
+        alumnos = db.session.query(Alumno.cve_alum, Alumno.alum_curp, Alumno.alum_edad, Alumno.alum_nombre,
+                                   Alumno.alum_apellidop, Alumno.alum_apellidom, Alumno.alum_sexo, Alumno.cvegrupo).filter(Alumno.cve_alum == id).first()
+        return alumnos
+
+    def actualizar_alumno(self, datos, id):
+        print('ENTRO AL METODO ACTUALIZAR')
+        print(id)
+        alum = Alumno.query.filter(Alumno.cve_alum == id).first()
+        print(alum)
+        if(alum!=None):
+            alum.alum_nombre = datos["nombre"]
+            alum.alum_curp = datos['curp']
+            alum.alum_edad = datos['edad']
+            alum.alum_apellidop = datos['p']
+            alum.alum_apellidom = datos['m']
+            alum.alum_sexo = datos['sexo']
+            alum.cvegrupo = datos['cvegp']
+            db.session.add(alum)
+            db.session.commit()
+        else:
+            self.alum_nombre = datos["nombre"]
+            self.alum_curp = datos['curp']
+            self.alum_edad = datos['edad']
+            self.alum_apellidop = datos['p']
+            self.alum_apellidom = datos['m']
+            self.alum_sexo = datos['sexo']
+            self.cvegrupo = datos['cvegp']
+            db.session.add(self)
+            db.session.commit()
 
 
 class Promedios_Finales(db.Model):
@@ -234,9 +276,9 @@ class calif_alumno(db.Model):
         msg = "Calificacion insertada correctamente"
         respuesta = {'status': 'OK', 'codigo': '', 'mensaje': msg}
 
-        self.CALIF_TRIM_ALUM = datos['calificacion']
+        self.CALIF_TRIM_ALUM = int(datos['calificacion'])
         self.CVE_ALUM = datos['cvealumno']
-        self.CVE_MATERIA = datos['cve_materia']
+        self.CVE_MATERIA = int(datos['cve_materia'])
         self.NUMERO_TRIMESTRE = datos['trimestre']
         try:
             db.session.add(self)

@@ -112,12 +112,17 @@
                             {% else: %}
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " name="Materia" value="" style="margin-top: .29rem;" type="text" placeholder="Nombre de la Materia" aria-label="Buscar" ></div>
                             {%endif%}
-                        </div>
-                        <div class="row mb-3 text-center" style="margin-top: 50px;">
-                            
+
                         </div>
 
+
                         <div class="justify-content-end" >
+                            
+                            <div class="row mb-3 text-center" style="margin-top: 50px;">
+                                <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Grado</label></div>
+                                <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " name="grado" style="margin-top: .29rem;" type="number" min="1" max="6" placeholder="Grado" aria-label="Buscar" ></div>
+                            </div>
+                            
                             <button type="submit" id="sidebarCollapse" class="btnAzul" style="right: 40px;" >
                                 <i class="bi bi-arrow-bar-up"></i>
                                 {% if bandera: %}

@@ -28,6 +28,9 @@ def inicioprincipal():
 @adminprofesor.route('/profesores')
 def inicio_profesores():
     profesores = db.session.query(Profesor.cveprof, Profesor.prof_nombre).all()
+    grupos = db.session.query(Grupo.cvegrupo, Grupo.grado,Grupo.grupo, Grupo.cveprof).all()
+
+
     if (request.args.get('idProfe') != None):
         profesor = Profesor()
         profesor.eliminar_profesor(request.args.get("idProfe"))
@@ -58,8 +61,7 @@ def inicio_profesores():
         return render_template('/admin/agregarprofesor.html', profesores = json_prof, botones = json_botones, bandera = False, id = idActualizar)
         #return redirect(url_for('agregarprofesor.agregar_profesor'))
 
-    return render_template('/admin/adminProfesores.html', profesores=profesores)
-
+    return render_template('/admin/adminProfesores.html', profesores=profesores, grupos = grupos)
 @admingrupo.route('/grupos')
 def inicio_grupos():
 
@@ -77,7 +79,7 @@ def inicio_calificaciones():
 
 @adminmateria.route('/materias')
 def inicio_materias():
-    materias = db.session.query(Materia.cve_materia, Materia.nombre_materia).all()
+    materias = db.session.query(Materia.cve_materia, Materia.nombre_materia, Materia.grado).all()
 
     if (request.args.get('cve_materia') != None):
         print("entro al request de eliminar")
@@ -114,9 +116,38 @@ def inicio_materias():
 
 @adminalumno.route('/alumnos')
 def inicio_alumnos():
-    alumnos = db.session.query(Alumno.cve_alum, Alumno.alum_nombre, Alumno.alum_apellidop, Alumno.alum_apellidom,Alumno.cvegrupo).all()
-    for alum in alumnos:
-       print(alum["cve_alum"])
+    alumnos = db.session.query(Alumno.cve_alum, Alumno.alum_nombre,
+                               Alumno.alum_apellidop, Alumno.alum_apellidom, Alumno.cvegrupo).all()
+
+    print(request.args.get('idAlumnoActualizar'))
+    if (request.args.get('idAlumnoActualizar') != None):
+
+        alumno = Alumno()
+        alum = alumno.consultar_alumno(request.args.get("idAlumnoActualizar"))
+        # profesores = db.session.query(Profesor.cveprof, Profesor.prof_nombre).all()
+        print(alum)
+        print("Entro al actualizar")
+        idActualizar = request.args.get('idAlumnoActualizar')
+        cvegrupo = list(db.session.query(Grupo.cvegrupo).all())
+        gg = db.session.query(Grupo.grado, Grupo.grupo, Grupo.cvegrupo)
+        json_alum = {
+            "clave": idActualizar,
+            "curp": alum["alum_curp"],
+            "edad": alum["alum_edad"],
+            "nameAlumno": alum["alum_nombre"],
+            "apellidoP": alum["alum_apellidop"],
+            "apellidoM": alum["alum_apellidom"],
+            "sexo": alum["alum_sexo"],
+            "grupo": alum["cvegrupo"]
+        }
+
+        json_botones = {
+            "texto": "ACTUALIZAR PROFESOR",
+            "boton": 'Actualizar Profesor'
+        }
+
+        # return json_prof
+        return render_template('/admin/agregarAlumno.html', alumnos=json_alum, botones=json_botones, bandera=False, id=idActualizar, grupos=cvegrupo, gg=gg)
 
     return render_template('/admin/adminAlumos.html', alumnos=alumnos)
 
@@ -177,31 +208,64 @@ def profesor_actualizado():
     else:
         return 'no holis'
 
+
 @agregaralumno.route('/agregar_alumno', methods=['GET', 'POST'])
 def agregar_alumno():
     cvegrupo = list(db.session.query(Grupo.cvegrupo).all())
     gg = db.session.query(Grupo.grado, Grupo.grupo, Grupo.cvegrupo)
-    return render_template('/admin/agregarAlumno.html', grupos=cvegrupo, gg=gg)
-@agregaralumno.route('/alumno_agregado', methods=['POST'])
+    return render_template('/admin/agregarAlumno.html', grupos=cvegrupo, gg=gg, bandera=True)
+
+
+@agregaralumno.route('/alumno_agregado', methods=['GET', 'POST'])
 def alumno_agregado():
+    print('Entro al alumno agregado')
     if request.method == 'POST':
         if request.form["Sexo"] == "Hombre":
-           sexo = 'H'
+            sexo = 'H'
         else:
-           sexo = 'M'
+            sexo = 'M'
         json_alumno = {
             "curp": request.form["curp"],
             "edad": request.form["edad"],
             "nombre": request.form["nameAlumno"],
-            "p":request.form["apellidoP"],
-            "m":request.form["apellidoM"],
+            "p": request.form["apellidoP"],
+            "m": request.form["apellidoM"],
             "sexo": sexo,
             "cvegp": request.form["grado"]
         }
         alumno = Alumno()
         print(json_alumno)
         alumno.registrar_alumno(json_alumno)
-        return redirect(url_for("agregaralumno.agregar_alumno"))#url_for('agregaralumno.alumno_agregado')
+        # url_for('agregaralumno.alumno_agregado')
+        return redirect(url_for("adminalumno.inicio_alumnos"))
+    else:
+        return 'no holis'
+
+
+@agregaralumno.route('/alumno_actualizado', methods=['POST'])
+def alumno_actualizado():
+    print(id)
+    if request.method == 'POST':
+        if request.form["Sexo"] == "Hombre":
+            sexo = 'H'
+        else:
+            sexo = 'M'
+        json_alumno = {
+
+            "curp": request.form["curp"],
+            "edad": request.form["edad"],
+            "nombre": request.form["nameAlumno"],
+            "p": request.form["apellidoP"],
+            "m": request.form["apellidoM"],
+            "sexo": sexo,
+            "cvegp": request.form["grado"]
+        }
+        alumno = Alumno()
+        print(json_alumno)
+        alumno.actualizar_alumno(json_alumno, request.form["id"])
+        # url_for('agregaralumno.alumno_agregado')
+        return redirect(url_for("adminalumno.inicio_alumnos"))
+
     else:
         return 'no holis'
 
@@ -215,7 +279,8 @@ def materia_agregado():
     if request.method == 'POST':
 
         json_materia = {
-            "nombremateria": request.form["Materia"]
+            "nombremateria": request.form["Materia"],
+            "grado": request.form["grado"]
         }
         materia = Materia()
         print(json_materia)
@@ -227,9 +292,11 @@ def materia_agregado():
 @asignargrupo.route('/asignar_grupo', methods=['GET', 'POST'])
 def asigar_grupo():
     #profesores = os.listdir(Profesor.prof_nombre)
-    profesores = list(db.session.query(Profesor.prof_nombre).all())
+    profesores = list(db.session.query(Profesor.prof_nombre, Profesor.habilitado).all())
+    habilitado = db.session.query(Profesor.habilitado).all()
+    print(habilitado)
     print(type(profesores))
-    return render_template('/admin/asignarGrupo.html', profesores=profesores)
+    return render_template('/admin/asignarGrupo.html', profesores=profesores, habilitados = habilitado)
 
 
 @asignargrupo.route('/grupo_agregado', methods=['POST'])
@@ -256,6 +323,13 @@ def grupo_agregado():
         }
         grupo = Grupo()
         print(cveprof)
+
+        json_hab = {
+            "habilitado": "0"
+        }
+        prof = Profesor()
+        prof.habilitar_profesor(json_hab, cveprof[0])
+
         grupo.registrar_grupo(json_grupo)
         return redirect(url_for('admingrupo.inicio_grupos'))
 

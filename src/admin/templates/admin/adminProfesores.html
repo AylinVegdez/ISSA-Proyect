@@ -127,10 +127,19 @@
                         </thead>
                         <tbody style="text-align: center;">
                              {% for profesor in profesores: %}
+
+
                             <tr>
                                 <th scope="row">{{ profesor["cveprof"] }}</th>
                                 <td>{{ profesor["prof_nombre"] }}</td>
-                                <td>Otto</td>
+                                {% for gp in grupos: %}
+                                     {% if profesor["cveprof"] == gp["cveprof"]%}
+                                     <td>{{ gp["grado"]}}° {{gp["grupo"]}}</td>
+                                     {% endif %} 
+                                     {%if (profesor["cveprof"] != gp["cveprof"]) and (profesor["cveprof"] in grupos)%}
+                                     <td>sin grupo</td>
+                                     {% endif %} 
+                                {% endfor %}
                                 <td><a href="?idProfeActualizar={{profesor.cveprof}}" ><i class="bi bi-pencil-square iconoEdit"></i></a></td>
                                 <td><a href="?idProfe={{profesor.cveprof}}" type="submit" ><i class="bi bi-trash-fill iconoTrahs"></i></a></td>
                             </tr>

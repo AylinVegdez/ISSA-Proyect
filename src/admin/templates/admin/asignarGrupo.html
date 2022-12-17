@@ -109,7 +109,12 @@
                                 
                                 <select class="form-control me-2 buscador " name="nameProf">
                                     {% for prof in profesores%}
-                                    <option name=config value="{{prof[0]}}" SELECTED>{{prof[0]}}</option>
+
+
+                                        {% if prof["habilitado"][0] == '1'  %}
+                                          <option name=config value="{{prof[0]}}" SELECTED>{{prof[0]}}</option>
+                                        {% endif %}
+
                                     {% endfor %}
                                   </select>
                         
