@@ -19,7 +19,6 @@ class Profesor(db.Model):
         self.sexo = datos['sexo']
         self.nombre_usuario = datos['nombre_usuario']
         self.password = self.cifrar_contrasena(datos['clave'])
-        self.habilitado = datos['habilitado']
 
         try:
             db.session.add(self)

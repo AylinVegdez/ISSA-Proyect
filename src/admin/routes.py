@@ -343,3 +343,22 @@ def grupo_agregado():
 
     else:
         return 'no holis'
+
+
+@asignarmateria.route('/materia_actualizado', methods=['POST'])
+def materia_actualizado():
+    print(id)
+    if request.method == 'POST':
+
+        json_materia = {
+            "nombremateria": request.form["Materia"],
+            "grado": request.form["grado"]
+        }
+        materia = Materia()
+        print(json_materia)
+        materia.actualizar_materia(json_materia, request.form["Clave"])
+        # url_for('agregaralumno.alumno_agregado')
+        return redirect(url_for("adminalumno.inicio_alumnos"))
+
+    else:
+        return 'no holis'

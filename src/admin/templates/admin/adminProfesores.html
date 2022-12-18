@@ -52,28 +52,8 @@
                 <li class="option active ">
                     <a href="/admin/profesores" >PROFESORES</a>
                 </li>
-                <li class="option ">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">GRUPOS</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="/admin/grupos">1° - Primero </a>
-                        </li>
-                        <li>
-                            <a href="/admin/grupos">2° - Segundo </a>
-                        </li>
-                        <li>
-                            <a href="/admin/grupos">3° - Tercero </a>
-                        </li>
-                        <li>
-                            <a href="/admin/grupos">4° - Cuarto </a>
-                        </li>
-                        <li>
-                            <a href="/admin/grupos">5° - Quinto </a>
-                        </li>
-                        <li>
-                            <a href="/admin/grupos">6° - Sexto </a>
-                        </li>
-                    </ul>
+                  <li class="option  ">
+                    <a href="/admin/grupos" >GRUPOS</a>
                 </li>
                 <li class="option">
                     <a href="/admin/alumnos">ALUMNOS</a>
@@ -81,9 +61,7 @@
                 <li class="option">
                     <a href="/admin/materias" >MATERIAS</a>
                 </li>
-                <li class="option">
-                    <a href="/admin/calificaciones" >CALIFICACIONES</a>
-                </li>
+
             </ul>
         </nav>
 
@@ -101,17 +79,7 @@
                     
         <!--Table-->
             <div class="container" style="padding-left: 30px; padding-right: 30px;">
-                <div class="d-flex justify-content-star">
-                    <label class="search_label">CONTROL PROFESORES
-                    </label>
-                    <div class="input-box">
-                        <input type="text" placeholder="Profesor" style="font-size: 10px;">
-                        <span class="icon">
-                            <i class="fa fa-search search-icon"></i>
-                        </span>
-                        <i class="close-icon bi bi-x-circle" style="color: #34b5aa;"></i>
-                    </div>
-                </div>
+
 
                 <!--  class="active" -->
                 <div class="table-responsive" style="padding-top:5px;" >
@@ -135,7 +103,7 @@
                                 {% for gp in grupos: %}
                                      {% if profesor["cveprof"] == gp["cveprof"]%}
                                      <td>{{ gp["grado"]}}° {{gp["grupo"]}}</td>
-                                     {% endif %} 
+                                     {% endif %}
                                      {%if (profesor["cveprof"] != gp["cveprof"]) and (profesor["cveprof"] in grupos)%}
                                      <td>sin grupo</td>
                                      {% endif %} 
