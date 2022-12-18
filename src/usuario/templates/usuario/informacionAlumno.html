@@ -76,21 +76,30 @@
                     <form  role="NombreProfesor">   
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Mark" aria-label="Buscar" readonly></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input value="{{al.alum_nombre}} {{al.alum_apellidop}} {{al.alum_apellidom}}" class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="Mark" aria-label="Buscar" readonly></div>
                         </div>
                         
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >CURP</label></div>
-                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="RILS000408HMNVPLA8" aria-label="Buscar" readonly></div>
+                            <div class="col-8 themed-grid-col" style="padding-left: 0rem;"><input value="{{al.alum_curp}}" class="form-control me-2 buscador  " style="margin-top: .29rem;" type="text" placeholder="RILS000408HMNVPLA8" aria-label="Buscar" readonly></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Edad</label></div>
-                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="10" aria-label="Buscar" readonly></div>
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><input value="{{al.alum_edad}}" class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" placeholder="10" aria-label="Buscar" readonly></div>
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Sexo</label></div>
+                            {% if al.alum_sexo == 'H' %}
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="Sexo" readonly disabled>
-                                <option>Hombre</option>
+                                <option selected>Hombre</option>
                                 <option>Mujer</option>
                               </select></div>
+                            {% else %}
+                            <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="Sexo" readonly disabled>
+                                <option>Hombre</option>
+                                <option selected>Mujer</option>
+                              </select></div>
+                            {% endif %}
+
+
                         </div>
                        
 

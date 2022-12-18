@@ -86,9 +86,9 @@
                             {% for usuario in usuarios: %}
                         <tr>
                             <th scope="row">{{ usuario["cve_alum"] }}</th>
-                            <td><a href="/usuario/informacion">{{ usuario["alum_nombre"] }}</td></a></td>
-                            <td><a href="#"><i class="bi bi-file-earmark-bar-graph-fill"></i></a></td>
-                            <td><a href="?idUsuario={{usuarios.cve_alum}}"><i class="bi bi-file-earmark-arrow-down"></i></a></td>
+                            <td><a href="?idMostrarAlumno={{usuario.cve_alum}}">{{ usuario["alum_nombre"] }} {{usuario["alum_apellidop"]}} {{usuario["alum_apellidom"]}}</td></a></td>
+                            <td><a href="?idAlumnoAvance={{usuario.cve_alum}}"><i class="bi bi-file-earmark-bar-graph-fill"></i></a></td>
+                            <td><a href="?idAlumnoBoleta={{usuario.cve_alum}}"><i class="bi bi-file-earmark-arrow-down"></i></a></td>
                         </tr>
                         {% endfor %}
                         </tbody>
@@ -103,10 +103,10 @@
                     <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <div class="container d-flex justify-content-end">
-                <button type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">     <!-- Boton azul, que colapsa el menu lateral  -->
+                <a href="/usuario/relacion"  type="button" id="sidebarCollapse" class="btnAzul" style="right: 40px;">     <!-- Boton azul, que colapsa el menu lateral  -->
                     <i class="bi bi-person" style="font-size: calc(0.7em + 0.5vw);"></i>
                     <span>Imprimir Relación</span>
-                </button>
+                </a>
             </div>
 
         </div>

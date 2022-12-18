@@ -35,7 +35,7 @@
                 <ul class="navbar-nav mx-auto ">
                     <li class="nav-item d-none d-lg-block">
                         <a class="nav-link mx-2" href="#">
-                          <img src="VIEWS/img/mich.png" height="60" />
+                          <img src="/static/img/mich.png" height="60" />
                         </a>
                       </li>
                   <li class="nav-item" style="font-weight: bold;text-align: center;line-height: 1px; padding-top: 10px;">
@@ -47,7 +47,7 @@
                   </li>
                   <li class="nav-item d-none d-lg-block">
                     <a class="nav-link mx-2" href="#">
-                      <img src="VIEWS/img/mich.png" height="60" />
+                      <img src="/static/img/mich.png" height="60" />
                     </a>
                   </li>
                  
@@ -62,15 +62,16 @@
         <!--Table-->
             <div class="container" style="padding-left: 50px; padding-right: 50px;">
                 <div style="text-align: center; padding-top: 50px;padding-bottom: 15px;">
-                    <h6 style="font-size: 8px;">INSCRIPCION &nbsp;INICIAL&nbsp;2º&nbsp;A&nbsp;6º&nbsp;NIVEL:&nbsp;PRIMARIA </h6>
+                    <h6 style="font-size: 8px;">INSCRIPCION &nbsp;INICIAL&nbsp;1º&nbsp;A&nbsp;6º&nbsp;NIVEL:&nbsp;PRIMARIA </h6>
                     <h6 style="font-size: 8px;">CICLO&nbsp;ESCOLAR &nbsp;2022-2023</h6>
-                    <h6 style="font-size: 8px;">ESCUELA: __”ALVARO OBREGON”__,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C.C.T.____ 16DPR1262P__,&nbsp;&nbsp;&nbsp;&nbsp;GRADO:__2___,&nbsp;&nbsp;&nbsp;GRUPO:___A____</h6>
+                    <h6 style="font-size: 8px;">ESCUELA: __”ALVARO OBREGON”__,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C.C.T.____ 16DPR1262P__,&nbsp;&nbsp;&nbsp;&nbsp;GRADO:{{grupo.grado}},&nbsp;&nbsp;&nbsp;GRUPO:{{grupo.grupo}}</h6>
                 </div>
                 
                 <!--  class="active" -->
                 <div class="table-responsive" style="padding-top:5px;" >
                     <table class="table table-active">
                         <thead style="text-align: center;">
+
                         <tr style="font-size: 9px;">
                             <th scope="col" class="tituloTable">N.P</th>
                             <th scope="col" class="tituloTable">C.U.R.P.</th>
@@ -80,20 +81,21 @@
                         </tr>
                         </thead>
                         <tbody style="text-align: center;">
+
+                        {% for al in alumnos: %}
+
                         <tr style="background-color: white;font-size:8px;">
-                            <th scope="row">1</th>
-                            <td><a href="#"style="color: black;">curp</a></td>
-                            <td><a href="#"style="color: black;">nombre y apellido</a></td>
-                            <td><a href="#"style="color: black;">Mark</a></td>
-                            <td><a href="#"style="color: black;">Mark</a></td>
+
+                            <th scope="row">{{loop.index}}</th>
+                            <td><a href="#"style="color: black;">{{al.alum_curp}}</a></td>
+                            <td><a href="#"style="color: black;">{al.alum_apellidop}} / {{al.alum_apellidom}} * {{al.alum_nombre}}</a></td>
+                            <td><a href="#"style="color: black;"></a></td>
+                            <td><a href="#"style="color: black;"></a></td>
+
                         </tr>
-                        <tr style="background-color: white;font-size:8px;">
-                            <th scope="row">1</th>
-                            <td><a href="#"style="color: black;">curp</a></td>
-                            <td><a href="#"style="color: black;">nombre y apellido</a></td>
-                            <td><a href="#"style="color: black;">Mark</a></td>
-                            <td><a href="#"style="color: black;">Mark</a></td>
-                        </tr>
+
+                        {% endfor %}
+
                         
                         </tbody>
                     </table>

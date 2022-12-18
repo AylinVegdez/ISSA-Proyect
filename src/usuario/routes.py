@@ -1,9 +1,9 @@
 
 
 
-from flask import render_template, request, g, redirect, url_for, session
+from flask import render_template, request, g, redirect, url_for, session, flash
 
-from . import iniciousuario, evaluacion, informacion, lista
+from . import iniciousuario, evaluacion, informacion, lista, avance, relacion, promedio
 from ..models import Alumno, Grupo, Materia, calif_alumno, Trimestres, Trimestrecapturado
 from ..extensiones import db
 
@@ -175,14 +175,89 @@ def inicio_informacion():
 
 @lista.route('/lista')
 def inicio_lista():
+
     gpo = Grupo.query.filter(Grupo.cveprof == g.id).first()
+    materias = Materia.query.filter(Materia.grado == gpo.grado)
+    trimestre = Trimestres.query.filter(Trimestres.cve_tri == 1).first()
 
     alumno = Alumno.query.filter(Alumno.cvegrupo == gpo.cvegrupo)
     #usuarios = db.session.query(Alumno.cve_alum, Alumno.alum_nombre, Alumno).all()
-    if (request.args.get('idUsuario') != None):
-        usuario = Alumno()
+
+    if (request.args.get('idMostrarAlumno') != None):
+        alum = Alumno()
+        al = alum.consultar_alumno(request.args.get('idMostrarAlumno'))
+
+
+        return render_template('/usuario/informacionAlumno.html', al=al)
+    if (request.args.get('idAlumnoAvance') != None):
+        alum = Alumno()
+        al = alum.consultar_alumno(request.args.get('idAlumnoAvance'))
+        listacalis = []
+
+        if(trimestre.trimestre==2):
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 1)
+            for c1 in calis:
+                prom = c1.CALIF_TRIM_ALUM/3
+                listacalis.append("{:.2f}".format(prom))
+        elif(trimestre.trimestre==3):
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 1)
+            calis2 = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 2)
+            for c1, c2 in zip(calis, calis2):
+                prom = (c1.CALIF_TRIM_ALUM+c1.CALIF_TRIM_ALUM) / 3
+                listacalis.append("{:.2f}".format(prom))
+        elif(trimestre.trimestre==4):
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 1)
+            calis2 = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 2)
+            calis3 = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 3)
+
+            for c1, c2, c3 in zip(calis, calis2, calis3):
+               # print("jjjjjjj",c1,c2,c3)
+                prom = (c1.CALIF_TRIM_ALUM + c2.CALIF_TRIM_ALUM + c3.CALIF_TRIM_ALUM)/3
+                listacalis.append("{:.2f}".format(prom))
+
+        return render_template('/usuario/avance.html', alumno = al, materias = materias, calis = calis, grupo = gpo, promedio = listacalis, trimestre = trimestre.trimestre)
+
+    if (request.args.get('idAlumnoBoleta') != None):
+        if trimestre.trimestre == 4:
+            alum = Alumno()
+            al = alum.consultar_alumno(request.args.get('idAlumnoBoleta'))
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 1)
+            calis2 = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 2)
+            calis3 = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 3)
+            listacalis = []
+            for c1, c2, c3 in zip(calis, calis2, calis3):
+                # print("jjjjjjj",c1,c2,c3)
+                prom = (c1.CALIF_TRIM_ALUM + c2.CALIF_TRIM_ALUM + c3.CALIF_TRIM_ALUM) / 3
+                listacalis.append("{:.2f}".format(prom))
+            promediogeneral = 0
+            for l in listacalis:
+                promediogeneral = promediogeneral + float(l)
+            listamaterias = []
+            for mat in materias:
+                listamaterias.append(mat)
+            promediogeneral = "{:.2f}".format(promediogeneral/len(listamaterias))
+            rango = len(listamaterias)
+            return render_template('/usuario/promedio.html', grupo= gpo, materias = materias, alumno = al, general = promediogeneral, lcalis = listacalis, rango=rango, calis = calis, calis2 = calis2, calis3 = calis3)
+        else:
+            flash("NO PUEDE VER BOLETA")
         # avance boletas
         # imprimir boleta
-        usuarios = db.session.query(Alumno.cve_alum, Alumno.alum_nombre).all()
+
     return render_template('/usuario/listaUsuario.html', usuarios=alumno)
 
+@avance.route("/avance")
+def inicio_avance():
+    return render_template('/usuario/avance.html')
+
+@relacion.route("/relacion")
+def inicio_relacion():
+    gpo = Grupo.query.filter(Grupo.cveprof == g.id).first()
+    alumno = Alumno.query.filter(Alumno.cvegrupo == gpo.cvegrupo)
+
+
+
+    return render_template('/usuario/relacion.html', alumnos = alumno, grupo = gpo)
+
+@promedio.route("/promedo")
+def inicio_promedio():
+    return render_template('/usuario/promedio.html')

@@ -35,17 +35,17 @@
                 <ul class="navbar-nav mx-auto ">
                     <li class="nav-item d-none d-lg-block">
                         <a class="nav-link mx-2" href="#">
-                          <img src="VIEWS/img/mich.png" height="60" />
+                          <img src="/static/img/mich.png" height="60" />
                         </a>
                       </li>
                   <li class="nav-item" style="font-weight: bold;text-align: center;line-height: 1px; padding-top: 10px;">
                     <a class="nav-link mx-2" style="color: black; font-size: 8px;">RELACION&nbsp;DE&nbsp;CALIFICACIONES&nbsp;2022-2023</a>
                     <a class="nav-link mx-2" style="color: black;font-size: 8px;" >ZE.&nbsp;081&nbsp;SECTOR&nbsp;50&nbsp;</a>
-                    <a class="nav-link mx-2" style="color: black;font-size: 8px;">GRADO:&nbsp;___&nbsp;EDUCACION&nbsp;BÁSICA</a>
+                    <a class="nav-link mx-2" style="color: black;font-size: 8px;">GRADO:&nbsp;{{grupo.grado}} &nbsp;EDUCACION&nbsp;BÁSICA</a>
                   </li>
                   <li class="nav-item d-none d-lg-block">
                     <a class="nav-link mx-2" href="#">
-                      <img src="VIEWS/img/mich.png" height="60" />
+                      <img src="/static/img/mich.png" height="60" />
                     </a>
                   </li>
                 </ul>
@@ -60,7 +60,7 @@
             <div class="container" style="padding-left: 50px; padding-right: 50px;">
                 <div style="text-align: center; padding-top: 50px;padding-bottom: 25px;">
                     <h6 style="font-size: 8px;">ESCUELA: __”ALVARO OBREGON”__,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C.C.T.____ 16DPR1262P__&nbsp;</h6>
-                    <h6 style="font-size: 8px;">GRADO:__2___,&nbsp;&nbsp;&nbsp;GRUPO:___A___&nbsp;&nbsp;&nbsp;NO.&nbsp;DE&nbsp;TRIMESTRE:__________</h6>
+                    <h6 style="font-size: 8px;">GRADO:{{grupo.grado}},&nbsp;&nbsp;&nbsp;GRUPO:{{grupo.grupo}}&nbsp;&nbsp</h6>
                 </div>
                 <h6 style="text-align: center;font-size: 8px;text-decoration: underline;">NOMBRE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
 
@@ -69,31 +69,53 @@
                     <table class="table table-active">
                         <thead style="text-align: center;">
                         <tr style="font-size: 9px;">
-                            <th scope="col" class="tituloTable">MATERIA</th>
-                            <th scope="col" class="tituloTable">TRIMESTRE&nbsp;1</th>
-                            <th scope="col" class="tituloTable">TRIMESTRE&nbsp;2</th>
-                            <th scope="col" class="tituloTable">TRIMESTRE&nbsp;3</th>
-                            <th scope="col" class="tituloTable">PROMEDIO</th>
+
+
                         </tr>
                         </thead>
                         <tbody style="text-align: center;">
+
                         <tr style="background-color: white;font-size:8px;">
-                            <th scope="row">ESPAÑOL</th>
-                            <td><a href="#"style="color: black;">8</a></td>
-                            <td><a href="#"style="color: black;">8</a></td>
-                            <td><a href="#"style="color: black;">8</a></td>
-                            <td><a href="#"style="color: black;">8</a></td>
+                            <th scope="col" class="tituloTable">MATERIA</th>
+                             {% for mat in materias: %}
+                            <th scope="row">{{mat.nombre_materia}}</th>
+                             {% endfor %}
+
                         </tr>
-                        <tr style="background-color: white;font-size:8px;">
-                            <th scope="row">MATEMATICAS</th>
-                            <td><a href="#"style="color: black;">8</a></td>
-                            <td><a href="#"style="color: black;">8</a></td>
-                            <td><a href="#"style="color: black;">8</a></td>
-                            <td><a href="#"style="color: black;">8</a></td>
-                        </tr>
+                          <tr style="background-color: white;font-size:8px;">
+                              <th scope="col" class="tituloTable">TRIMESTRE&nbsp;1</th>
+                              {% for c in calis %}
+                              <td><a href="#"style="color: black;">{{c.CALIF_TRIM_ALUM}}</a></td>
+                              {% endfor %}
+
+                          </tr>
+                          <tr style="background-color: white;font-size:8px;">
+                              <th scope="col" class="tituloTable">TRIMESTRE&nbsp;2</th>
+                              {% for c in calis2 %}
+                               <td><a href="#"style="color: black;">{{c.CALIF_TRIM_ALUM}}</a></td>
+                              {% endfor %}
+                          </tr>
+                          <tr style="background-color: white;font-size:8px;">
+                              <th scope="col" class="tituloTable">TRIMESTRE&nbsp;3</th>
+                              {% for c in calis3 %}
+                              <td><a href="#"style="color: black;">{{c.CALIF_TRIM_ALUM}}</a></td>
+                              {% endfor %}
+
+
+                          </tr>
+                          <tr style="background-color: white;font-size:8px;">
+                              <th scope="col" class="tituloTable">PROMEDIO</th>
+                              {% for l in lcalis %}
+                               <td><a href="#"style="color: black;">{{l}}</a></td>
+                              {% endfor %}
+
+                          </tr>
+
+
+
                         <tr style="background-color: white;font-size:8px; ">
                             <th scope="row" colspan=4 style="text-align: right;">PROMEDIO FINAL</th>
-                            <td ><a href="#"style="color: black;">8</a></td>
+                            <td ><a href="#"style="color: black;">{{general}}</a></td>
                            
                         </tr>
                         

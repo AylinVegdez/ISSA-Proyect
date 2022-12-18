@@ -8,4 +8,10 @@ informacion = Blueprint('informacion', __name__, url_prefix='/usuario', template
 
 lista = Blueprint('lista', __name__, url_prefix='/usuario', template_folder='templates')
 
+avance = Blueprint('avance', __name__, url_prefix='/usuario', template_folder='templates')
+
+promedio = Blueprint('promedio', __name__, url_prefix='/usuario', template_folder='templates')
+
+relacion = Blueprint('relacion', __name__, url_prefix='/usuario', template_folder='templates')
+
 from . import routes

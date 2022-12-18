@@ -7,7 +7,7 @@ from .admin import inicio, adminalumno, admincalificacion, admingrupo, adminmate
 from .configuracion import DevConfig
 from .extensiones import db
 from .routes.profesorRoutes import profesor
-from .usuario import iniciousuario, evaluacion, informacion, lista
+from .usuario import iniciousuario, evaluacion, informacion, lista, avance, promedio, relacion
 
 
 # from src.categorias.routes import categoria
@@ -40,6 +40,9 @@ def create_app():
     app.register_blueprint(evaluacion)
     app.register_blueprint(informacion)
     app.register_blueprint(lista)
+    app.register_blueprint(avance)
+    app.register_blueprint(promedio)
+    app.register_blueprint(relacion)
 
 
     return app
