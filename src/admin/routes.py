@@ -117,7 +117,16 @@ def inicio_materias():
 @adminalumno.route('/alumnos')
 def inicio_alumnos():
     alumnos = db.session.query(Alumno.cve_alum, Alumno.alum_nombre,
-                               Alumno.alum_apellidop, Alumno.alum_apellidom, Alumno.cvegrupo).all()
+                               Alumno.alum_apellidop, Alumno.alum_apellidom, Alumno.cvegrupo).filter(Alumno.alum_estado==0).all()
+
+    print('Id eliminar')
+    print(request.args.get('idAlumnoEliminar'))
+    if (request.args.get('idAlumnoEliminar') != None):
+        alumno = Alumno()
+        alumno.eliminar_alumno(request.args.get("idAlumnoEliminar"))
+        alumnos = db.session.query(Alumno.cve_alum, Alumno.alum_nombre,
+                               Alumno.alum_apellidop, Alumno.alum_apellidom, Alumno.cvegrupo).filter(Alumno.alum_estado==0).all()
+
 
     print(request.args.get('idAlumnoActualizar'))
     if (request.args.get('idAlumnoActualizar') != None):
@@ -150,7 +159,6 @@ def inicio_alumnos():
         return render_template('/admin/agregarAlumno.html', alumnos=json_alum, botones=json_botones, bandera=False, id=idActualizar, grupos=cvegrupo, gg=gg)
 
     return render_template('/admin/adminAlumos.html', alumnos=alumnos)
-
 
 @agregarprofesor.route('/agregar_profesor')
 def agregar_profesor():

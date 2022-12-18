@@ -115,27 +115,27 @@
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  "  name = "nameAlumno"style="margin-top: .29rem;" type="text"  aria-label="Buscar" value="{{alumnos['nameAlumno']}}"></div>
+                                <input class="form-control me-2 buscador  "  name = "nameAlumno"style="margin-top: .29rem;" type="text"  aria-label="Buscar" value="{{alumnos['nameAlumno']}}" required minlength="1" maxlength="30"></div>
                         </div>  
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Paterno</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  " name="apellidoP"style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" value="{{alumnos['apellidoP']}}" ></div>
+                                <input class="form-control me-2 buscador  " name="apellidoP"style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" value="{{alumnos['apellidoP']}}"required minlength="1" maxlength="30" ></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Materno</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  "  name="apellidoM"style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" value="{{alumnos['apellidoM']}}"></div>
+                                <input class="form-control me-2 buscador  "  name="apellidoM"style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" value="{{alumnos['apellidoM']}}" required minlength="1" maxlength="30"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >CURP</label></div>
                             <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  "  name="curp"style="margin-top: .29rem;" type="text" placeholder="CURP" aria-label="Buscar" value="{{alumnos['curp']}}"></div>
+                                <input class="form-control me-2 buscador  "  name="curp"style="margin-top: .29rem;" type="text" placeholder="CURP" aria-label="Buscar" value="{{alumnos['curp']}}" required minlength="1" maxlength="18"></div>
                         </div>
                         <div class="row mb-3 text-center" >
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Edad</label></div>
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                <input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" min ="5" max="12"placeholder="Edad" aria-label="Buscar"  name="edad" value="{{alumnos['edad']}}" ></div>
+                                <input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" min ="5" max="12"placeholder="Edad" aria-label="Buscar"  name="edad" value="{{alumnos['edad']}}" required ></div>
                             <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Sexo</label></div>
                             {% if alumnos["sexo"] == 'H' %}
                             <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="Sexo">
@@ -172,27 +172,27 @@
                                     <div class="row mb-3 text-center" >
                                         <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Nombre</label></div>
                                         <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                            <input class="form-control me-2 buscador  "  name = "nameAlumno"style="margin-top: .29rem;" type="text" placeholder="Nombre del Alumno" aria-label="Buscar" ></div>
+                                            <input class="form-control me-2 buscador  "  name = "nameAlumno"style="margin-top: .29rem;" type="text" placeholder="Nombre del Alumno" aria-label="Buscar" required minlength="1" maxlength="30" ></div>
                                     </div>
                                     <div class="row mb-3 text-center" >
                                         <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Paterno</label></div>
                                         <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                            <input class="form-control me-2 buscador  " name="apellidoP"style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" ></div>
+                                            <input class="form-control me-2 buscador  " name="apellidoP"style="margin-top: .29rem;" type="text" placeholder="Apellido Paterno" aria-label="Buscar" required minlength="1" maxlength="30" ></div>
                                     </div>
                                     <div class="row mb-3 text-center" >
                                         <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Apellido Materno</label></div>
                                         <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                            <input class="form-control me-2 buscador  "  name="apellidoM"style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" ></div>
+                                            <input class="form-control me-2 buscador  "  name="apellidoM"style="margin-top: .29rem;" type="text" placeholder="Apellido Materno" aria-label="Buscar" required minlength="1" maxlength="30"></div>
                                     </div>
                                     <div class="row mb-3 text-center" >
                                         <div class="col-4 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >CURP</label></div>
                                         <div class="col-8 themed-grid-col" style="padding-left: 0rem;">
-                                            <input class="form-control me-2 buscador  "  name="curp"style="margin-top: .29rem;" type="text" placeholder="CURP" aria-label="Buscar" ></div>
+                                            <input class="form-control me-2 buscador  "  name="curp"style="margin-top: .29rem;" type="text" placeholder="CURP" aria-label="Buscar" required minlength="1" maxlength="18" ></div>
                                     </div>
                                     <div class="row mb-3 text-center" >
                                         <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Edad</label></div>
                                         <div class="col-3 themed-grid-col" style="padding-left: 0rem;">
-                                            <input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" min ="5" max="12"placeholder="Edad" aria-label="Buscar"  name="edad" ></div>
+                                            <input class="form-control me-2 buscador  " style="margin-top: .29rem;" type="number" min ="5" max="12"placeholder="Edad" aria-label="Buscar"  name="edad" required ></div>
                                         <div class="col-3 themed-grid-col" style="padding-right: 0rem;"><label class="etiquetaAzul d-flex" style="color: white; " >Sexo</label></div>
                                         <div class="col-3 themed-grid-col" style="padding-left: 0rem;"><select class="form-control me-2 buscador " name="Sexo">
                                             <option selected>Hombre</option>

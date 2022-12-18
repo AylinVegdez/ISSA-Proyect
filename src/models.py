@@ -102,11 +102,23 @@ class Profesor(db.Model):
             Profesor.cveprof == id).first()
         return profesores
 
+
 class Materia(db.Model):
     name = 'MATERIA'
     cve_materia = Column(Integer, primary_key=True)
     nombre_materia = Column(String(30), nullable=False)
-    grado = Column(Integer, nullable=False, default=1)  # este es el nuevo que agregué
+    grado = Column(Integer, nullable=False, default=1)
+
+    # este es el nuevo que agregué
+    def actualizar_materia(self, datos, id):
+        mat = Materia.query.filter(Materia.cve_materia == id).first()
+        print("Este es el mat")
+        print(mat)
+        mat.nombre_materia = datos["nombremateria"],
+        mat.cve_materia = id,
+        mat.grado = datos['grado']
+        db.session.add(mat)
+        db.session.commit()
 
     def registrar_materia(self, datos):
         msg = "Materia insertada correctamente"
@@ -115,6 +127,7 @@ class Materia(db.Model):
         print(datos.get("clavemateria"))
         if (datos.get("clavemateria") == None):
             self.nombre_materia = datos['nombremateria']
+            self.grado = datos['grado']
             db.session.add(self)
             db.session.commit()
         else:
@@ -148,7 +161,6 @@ class Materia(db.Model):
         mat = Materia.query.filter(Materia.cve_materia == id).first()
         db.session.delete(mat)
         db.session.commit()
-
 
 class Grupo(db.Model):
     cvegrupo = Column(Integer, primary_key=True)
@@ -215,6 +227,11 @@ class Alumno(db.Model):
             # respuesta["mensaje"] = msj_error
         return respuesta
 
+    def eliminar_alumno(self, id):
+        alum = Alumno.query.filter(Alumno.cve_alum == id).first()
+        alum.alum_estado = 1
+        db.session.add(alum)
+        db.session.commit()
     def consultar_alumno(self, id):
         # prof = Profesor.query.filter(Profesor.cveprof == id).first()
         alumnos = db.session.query(Alumno.cve_alum, Alumno.alum_curp, Alumno.alum_edad, Alumno.alum_nombre,
@@ -266,7 +283,7 @@ class Calif_Alumno(db.Model):
 
 class calif_alumno(db.Model):
     _name_ = 'calif_alumno'
-    cve_calif_alum = Column(Integer, primary_key=True)
+    CVE_CALIFALUMNO = Column(Integer, primary_key=True)
     CALIF_TRIM_ALUM = Column(DECIMAL(4, 2), nullable=False)
     NUMERO_TRIMESTRE = Column(Integer, nullable=False)
     CVE_ALUM = Column(Integer, ForeignKey('alumno.cve_alum'))  # ForeignKey('Alumno.cve_alum'))
@@ -299,6 +316,44 @@ class Prom_Materia_Alumno(db.Model):
     cve_materia = Column(Integer, ForeignKey('MATERIA.cve_materia'))
     cve_alum = Column(Integer, ForeignKey('ALUMNO.cve_alum'))
 
+
+class Trimestres(db.Model):
+    cve_tri = Column(Integer, primary_key=True)
+    trimestre = Column(Integer, nullable=False)
+    tri = Column(Integer)
+
+    def actualizar_trimestre(self, datos):
+
+        tri = Trimestres.query.filter(Trimestres.cve_tri==1).first()
+        tri.trimestre = datos["tri"]
+        db.session.add(tri)
+        db.session.commit()
+
+
+
+
+class Trimestrecapturado(db.Model):
+    cve_capturado=Column(Integer, primary_key=True)
+    cve_grupo = Column(Integer)
+    cve_profe = Column(Integer)
+    tri = Column(Integer)
+
+    def registrar_trimestre(self, datos):
+        msg = "Profesor insertado correctamente"
+        respuesta = {'status': 'OK', 'codigo': '', 'mensaje': msg}
+        self.cve_grupo = datos['cve_grupo']
+        self.cve_profe = datos['cve_profe']
+        self.tri = datos['tri']
+
+        try:
+            db.session.add(self)
+            db.session.commit()
+            respuesta["codigo"] = '1'
+
+
+        except exc.SQLAlchemyError as error:
+            print(error)
+        return respuesta
 
 class prom_materia_alumno(db.Model):
     _name_ = 'prom_materia_alumno'

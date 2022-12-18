@@ -4,7 +4,7 @@
 from flask import render_template, request, g, redirect, url_for, session
 
 from . import iniciousuario, evaluacion, informacion, lista
-from ..models import Alumno, Grupo, Materia, calif_alumno
+from ..models import Alumno, Grupo, Materia, calif_alumno, Trimestres, Trimestrecapturado
 from ..extensiones import db
 
 #definir el Blueprint
@@ -30,11 +30,94 @@ def inicio_evaluacion():
     materias = Materia.query.filter(Materia.grado == gpo.grado)
     alumno = Alumno.query.filter(Alumno.cvegrupo == gpo.cvegrupo)
 
+    trimestre = Trimestres.query.filter(Trimestres.cve_tri == 1).first()
+    capturado = Trimestrecapturado.query.filter(Trimestrecapturado.cve_grupo == gpo.cvegrupo).first()
 
+    print(trimestre.trimestre)
+    print(capturado)
+
+    if(trimestre.trimestre==1): #ES DE SI EL TRIMESTRE 1 ESTÁ EN CURSO
+              #YA TIENE REGISTRADO EL PRIMER TRIMESTRE Y PUES YA NO DEBE PODER MODIFICAR
+      listacalis = []
+      for al in alumno:
+          calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE==1)
+          for c in calis:
+             print("obj",c.CALIF_TRIM_ALUM)
+
+          listacalis.append(calis)
+          print("lista", listacalis)
+      for l in listacalis:
+        for c in l:
+            print("imprimiendo c",c)
+
+
+      return render_template('/usuario/evaluacionAlumno.html', materias=materias, alumnos=alumno, trimestre=1,
+                                       activado=True, calis = listacalis)
+
+    elif trimestre.trimestre == 2:
+        listacalis = []
+        for al in alumno:
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 1)
+            for c in calis:
+                print("obj", c.CALIF_TRIM_ALUM)
+
+            listacalis.append(calis)
+            print("lista", listacalis)
+        for l in listacalis:
+            for c in l:
+                print("imprimiendo c", c)
+
+        return render_template('/usuario/evaluacionAlumno.html', materias=materias, alumnos=alumno, trimestre=2,
+                               activado=False, calis=listacalis)
+
+    elif trimestre.trimestre == 3:
+        listacalis = []
+        for al in alumno:
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 1)
+            for c in calis:
+                print("obj", c.CALIF_TRIM_ALUM)
+
+            listacalis.append(calis)
+
+        listacalis2 = []
+        for al in alumno:
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 2)
+            for c in calis:
+                print("obj", c.CALIF_TRIM_ALUM)
+
+            listacalis2.append(calis)
+
+
+        return render_template('/usuario/evaluacionAlumno.html', materias=materias, alumnos=alumno, trimestre=3,
+                               activado=False, calis=listacalis, calis2=listacalis2)
+    elif trimestre.trimestre == 4:
+        listacalis = []
+        for al in alumno:
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 1)
+            for c in calis:
+                print("obj", c.CALIF_TRIM_ALUM)
+
+            listacalis.append(calis)
+
+        listacalis2 = []
+        for al in alumno:
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 2)
+            for c in calis:
+                print("obj", c.CALIF_TRIM_ALUM)
+
+            listacalis2.append(calis)
+        listacalis3 = []
+        for al in alumno:
+            calis = calif_alumno.query.filter(calif_alumno.CVE_ALUM == al.cve_alum, calif_alumno.NUMERO_TRIMESTRE == 3)
+            for c in calis:
+                print("obj", c.CALIF_TRIM_ALUM)
+
+            listacalis3.append(calis)
+
+        return render_template('/usuario/evaluacionAlumno.html', materias=materias, alumnos=alumno, trimestre=4,
+                               activado=False, calis=listacalis, calis2=listacalis2, calis3 = listacalis3)
 
         #return redirect(url_for("evaluacion.inicio_evaluacion<i>"), i = i)
-
-
 
     return render_template('/usuario/evaluacionAlumno.html', materias=materias, alumnos=alumno)
 
@@ -43,6 +126,8 @@ def evaluacion_agregada():
     gpo = Grupo.query.filter(Grupo.cveprof == g.id).first()
     materias = Materia.query.filter(Materia.grado == gpo.grado)
     alumno = Alumno.query.filter(Alumno.cvegrupo == gpo.cvegrupo)
+    trimestre = Trimestres.query.filter(Trimestres.cve_tri == 1).first()
+
     if request.method == "POST":
 
         listatodo = []
@@ -59,11 +144,14 @@ def evaluacion_agregada():
             dicc["calificaciones"] = listacalis
             listatodo.append(dicc)
         print(listatodo)
+        json_trimestre = {}
+        json_trimestre["cve_grupo"] = gpo.cvegrupo
+        json_trimestre["cve_profe"] = g.id
 
         for l in listatodo:
             json_calif = {}
             json_calif["cvealumno"] = l["cve_alum"]
-            json_calif["trimestre"] = 1
+            json_calif["trimestre"] = trimestre.trimestre
             for cal in l["calificaciones"]:
                 for value in cal:
 
@@ -74,6 +162,9 @@ def evaluacion_agregada():
                 calif = calif_alumno()
 
                 calif.registrar_calif(json_calif)
+        json_trimestre["tri"] = trimestre.trimestre + 1
+        capturado = Trimestres()
+        capturado.actualizar_trimestre(json_trimestre)
     return redirect(url_for("evaluacion.inicio_evaluacion"))
 
 
@@ -84,11 +175,14 @@ def inicio_informacion():
 
 @lista.route('/lista')
 def inicio_lista():
-    usuarios = db.session.query(Alumno.cve_alum, Alumno.alum_nombre, Alumno).all()
+    gpo = Grupo.query.filter(Grupo.cveprof == g.id).first()
+
+    alumno = Alumno.query.filter(Alumno.cvegrupo == gpo.cvegrupo)
+    #usuarios = db.session.query(Alumno.cve_alum, Alumno.alum_nombre, Alumno).all()
     if (request.args.get('idUsuario') != None):
         usuario = Alumno()
         # avance boletas
         # imprimir boleta
         usuarios = db.session.query(Alumno.cve_alum, Alumno.alum_nombre).all()
-    return render_template('/usuario/listaUsuario.html', usuarios=usuarios)
+    return render_template('/usuario/listaUsuario.html', usuarios=alumno)
 

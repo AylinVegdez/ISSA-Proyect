@@ -86,10 +86,74 @@
                         {% if materias: %}
                         {% for mat in materias: %}
                         <tr>
+                            {% if trimestre==1: %}
                             <th scope="row">{{mat.nombre_materia}}</th>
+                            {% if activado: %}
                             <td><input type="text" id="cal1" class="inputTable " name="cal1{{mat.cve_materia}}{{al.cve_alum}}"/></td>
+                            {% else: %}
+                            {% for cal in calis: %}
+                            {% for c in cal: %}
+                            {% if c.CVE_ALUM == al.cve_alum and c.CVE_MATERIA == mat.cve_materia: %}
+                            <td><input type="text" id="cal1" class="inputTable" value="{{c.CALIF_TRIM_ALUM}}" name="cal1{{mat.cve_materia}}{{al.cve_alum}}" disabled/></td>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            {% endif %}
                             <td><input type="text" id="cal2" class="inputTable" disabled/></td>
                             <td><input type="text" id="cal3" class="inputTable" disabled /></td>
+                            {% elif trimestre==2: %}
+                            <th scope="row">{{mat.nombre_materia}}</th>
+                            {% for cal in calis: %}
+                            {% for c in cal: %}
+                            {% if c.CVE_ALUM == al.cve_alum and c.CVE_MATERIA == mat.cve_materia: %}
+                            <td><input type="text" id="cal1" class="inputTable" value="{{c.CALIF_TRIM_ALUM}}"disabled/></td>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            <td><input type="text" id="cal2" class="inputTable" name="cal1{{mat.cve_materia}}{{al.cve_alum}}"/></td>
+                            <td><input type="text" id="cal3" class="inputTable" disabled /></td>
+                                {% elif trimestre==3: %}
+                            <th scope="row">{{mat.nombre_materia}}</th>
+                            {% for cal in calis: %}
+                            {% for c in cal: %}
+                            {% if c.CVE_ALUM == al.cve_alum and c.CVE_MATERIA == mat.cve_materia: %}
+                            <td><input type="text" id="cal1" class="inputTable" value="{{c.CALIF_TRIM_ALUM}}"disabled/></td>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            {% for cal in calis2: %}
+                            {% for c in cal: %}
+                            {% if c.CVE_ALUM == al.cve_alum and c.CVE_MATERIA == mat.cve_materia: %}
+                            <td><input type="text" id="cal2" class="inputTable" value="{{c.CALIF_TRIM_ALUM}}"disabled/></td>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            <td><input type="text" id="cal3" class="inputTable" name="cal1{{mat.cve_materia}}{{al.cve_alum}}" /></td>
+                              {% elif trimestre==4: %}
+                            <th scope="row">{{mat.nombre_materia}}</th>
+                            {% for cal in calis: %}
+                            {% for c in cal: %}
+                            {% if c.CVE_ALUM == al.cve_alum and c.CVE_MATERIA == mat.cve_materia: %}
+                            <td><input type="text" id="cal1" class="inputTable" value="{{c.CALIF_TRIM_ALUM}}"disabled/></td>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            {% for cal in calis2: %}
+                            {% for c in cal: %}
+                            {% if c.CVE_ALUM == al.cve_alum and c.CVE_MATERIA == mat.cve_materia: %}
+                            <td><input type="text" id="cal2" class="inputTable" value="{{c.CALIF_TRIM_ALUM}}"disabled/></td>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                             {% for cal in calis3: %}
+                            {% for c in cal: %}
+                            {% if c.CVE_ALUM == al.cve_alum and c.CVE_MATERIA == mat.cve_materia: %}
+                            <td><input type="text" id="cal3" class="inputTable" value="{{c.CALIF_TRIM_ALUM}}"disabled/></td>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            {% endif %}
+
                         </tr>
                         {% endfor %}
                         {% endif %}
@@ -111,11 +175,14 @@
                 {% endfor %}
             </div>
         <!-- Search form -->
-            <div class="container d-flex justify-content-center"> 
+
+            <div class="container d-flex justify-content-center">
+
                 <button type="submit" id="sidebarCollapse" class="btnAzul"  >     <!-- Boton azul, que colapsa el menu lateral  -->
                     <i class="bi bi-check-circle"></i>
                     <span>Confirmar</span>
                 </button>
+
             </div>
             </form>
         </div>

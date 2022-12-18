@@ -101,7 +101,11 @@
                 <hr size="8rem" color="black" style="margin: .5rem;"></hr>
                 
                 <!-- <form class="d-flex" role="NombreProfesor" style=" align-items: center; padding-right: 3rem; padding-left: 3rem; padding-top: 1rem; position: relative;" > -->
+                    {% if bandera: %}
+                    <form  role="NombreProfesor" method="POST" action="materia_actualizado" onsubmit="return submitForm(this);">
+                    {%else%}
                     <form  role="NombreProfesor" method="POST" action="materia_agregado" onsubmit="return submitForm(this);">  
+                    {%endif%}
                         {% if bandera: %}
                         <input class="form-control me-2 buscador  " name="Clave" value="{{materias['clave_materia']}}" style="margin-top: .29rem;" type="hidden"  aria-label="Buscar" >
                         {%endif%}
