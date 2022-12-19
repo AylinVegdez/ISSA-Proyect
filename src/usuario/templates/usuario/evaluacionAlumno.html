@@ -89,7 +89,7 @@
                             {% if trimestre==1: %}
                             <th scope="row">{{mat.nombre_materia}}</th>
                             {% if activado: %}
-                            <td><input type="text" id="cal1" class="inputTable " name="cal1{{mat.cve_materia}}{{al.cve_alum}}"/></td>
+                            <td><input type="number" max="10" min="0" id="cal1" class="inputTable " required name="cal1{{mat.cve_materia}}{{al.cve_alum}}"/></td>
                             {% else: %}
                             {% for cal in calis: %}
                             {% for c in cal: %}
@@ -110,7 +110,7 @@
                             {% endif %}
                             {% endfor %}
                             {% endfor %}
-                            <td><input type="text" id="cal2" class="inputTable" name="cal1{{mat.cve_materia}}{{al.cve_alum}}"/></td>
+                            <td><input type="number" min="0" max="10" id="cal2" class="inputTable" required name="cal1{{mat.cve_materia}}{{al.cve_alum}}"/></td>
                             <td><input type="text" id="cal3" class="inputTable" disabled /></td>
                                 {% elif trimestre==3: %}
                             <th scope="row">{{mat.nombre_materia}}</th>
@@ -128,7 +128,7 @@
                             {% endif %}
                             {% endfor %}
                             {% endfor %}
-                            <td><input type="text" id="cal3" class="inputTable" name="cal1{{mat.cve_materia}}{{al.cve_alum}}" /></td>
+                            <td><input type="number" max="10" min="0" id="cal3" class="inputTable" required name="cal1{{mat.cve_materia}}{{al.cve_alum}}" /></td>
                               {% elif trimestre==4: %}
                             <th scope="row">{{mat.nombre_materia}}</th>
                             {% for cal in calis: %}
